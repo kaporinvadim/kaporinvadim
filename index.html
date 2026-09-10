@@ -4,168 +4,347 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Vadim — video editor. Reels, Shorts, talking-head and story-driven short-form editing." />
+  <meta name="theme-color" content="#0a0f1a" />
   <title>Vadim — Video Editor</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root{
+      --bg:#070a12;
+      --bg2:#0b1020;
+      --text:#f7f9ff;
+      --muted:#a8b0c2;
+      --muted2:#7f8aa3;
+      --glass:rgba(255,255,255,.085);
+      --glass-strong:rgba(255,255,255,.13);
+      --line:rgba(255,255,255,.17);
+      --line-soft:rgba(255,255,255,.10);
+      --shadow:0 28px 80px rgba(0,0,0,.35);
+      --radius:28px;
+      --radius-sm:20px;
+      --shell:min(1180px, calc(100% - 40px));
+      --accent:#dce7ff;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 5%, rgba(116,145,255,.20), transparent 30%),
+        radial-gradient(circle at 92% 18%, rgba(180,95,255,.14), transparent 28%),
+        radial-gradient(circle at 52% 88%, rgba(61,214,255,.10), transparent 34%),
+        linear-gradient(180deg,var(--bg2),var(--bg) 45%,#060910);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.5;
+      overflow-x:hidden;
+    }
+
+    body::before,body::after{
+      content:"";
+      position:fixed;
+      width:440px;
+      height:440px;
+      border-radius:50%;
+      filter:blur(80px);
+      pointer-events:none;
+      z-index:-1;
+      opacity:.35;
+    }
+    body::before{background:#5277ff;left:-170px;top:26vh}
+    body::after{background:#7a45d6;right:-180px;top:54vh}
+
+    a{color:inherit}
+    button{font:inherit}
+    .shell{width:var(--shell);margin-inline:auto}
+
+    .glass{
+      background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.055));
+      border:1px solid var(--line);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.18), var(--shadow);
+      backdrop-filter:blur(26px) saturate(135%);
+      -webkit-backdrop-filter:blur(26px) saturate(135%);
+    }
+
+    .nav-wrap{position:sticky;top:16px;z-index:20;padding-top:16px}
+    .nav{
+      min-height:64px;
+      border-radius:999px;
+      padding:10px 12px 10px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand{text-decoration:none;display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.12em}
+    .brand-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(145deg,#fff,#aabfff);box-shadow:0 0 18px rgba(180,199,255,.8)}
+    .nav nav{display:flex;align-items:center;gap:6px}
+    .nav nav a{color:var(--muted);text-decoration:none;padding:10px 14px;border-radius:999px;font-size:13px;transition:.2s ease}
+    .nav nav a:hover{color:white;background:rgba(255,255,255,.08)}
+
+    .hero{padding:86px 0 68px}
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      min-height:610px;
+      border-radius:40px;
+      padding:clamp(34px,6vw,78px);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      width:540px;height:540px;border-radius:50%;
+      right:-130px;top:-190px;
+      background:radial-gradient(circle,rgba(185,205,255,.28),rgba(185,205,255,0) 66%);
+      pointer-events:none;
+    }
+    .kicker,.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:#c7d5ff}
+    .hero h1{font-size:clamp(54px,8.5vw,116px);line-height:.90;letter-spacing:-.07em;margin:22px 0 26px;max-width:930px}
+    .hero h1 span{color:rgba(241,245,255,.45)}
+    .hero-copy{font-size:clamp(18px,2vw,24px);max-width:720px;color:#c0c7d7;margin:0}
+    .hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-top:70px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;padding:14px 20px;font-size:13px;font-weight:760;transition:.2s ease;border:1px solid var(--line)}
+    .btn.primary{background:rgba(255,255,255,.93);color:#0a0f1a;border-color:transparent;box-shadow:0 10px 30px rgba(255,255,255,.08)}
+    .btn.primary:hover{transform:translateY(-2px);background:white}
+    .btn.glass-btn{background:rgba(255,255,255,.07);color:#eef3ff}
+    .btn.glass-btn:hover{background:rgba(255,255,255,.12)}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,minmax(110px,1fr));gap:8px;min-width:min(420px,100%)}
+    .stat{padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line-soft)}
+    .stat strong{display:block;font-size:14px;margin-bottom:3px}.stat span{color:var(--muted2);font-size:11px}
+
+    section.content-section{padding:66px 0}
+    .section-head{display:grid;grid-template-columns:1fr minmax(260px,420px);gap:48px;align-items:end;margin-bottom:28px}
+    .section-head h2{font-size:clamp(38px,5vw,66px);letter-spacing:-.055em;line-height:1;margin:10px 0 0}
+    .section-head p{margin:0;color:var(--muted);font-size:15px}
+
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project-card{border-radius:var(--radius);padding:12px;min-width:0;transition:.25s ease}
+    .project-card:hover{transform:translateY(-4px);background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.07))}
+    .poster{width:100%;aspect-ratio:9/16;border:0;padding:0;border-radius:20px;overflow:hidden;position:relative;cursor:pointer;background:#111827;display:block}
+    .poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s cubic-bezier(.2,.7,.2,1),filter .3s ease}
+    .project-card:hover .poster img{transform:scale(1.025);filter:brightness(.82)}
+    .poster::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,8,18,.45),transparent 42%)}
+    .play{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(18px);color:white;opacity:0;transition:.22s ease;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+    .project-card:hover .play{opacity:1}
+    .number{position:absolute;z-index:2;left:14px;top:14px;padding:6px 9px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.08em;background:rgba(11,16,30,.46);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(14px)}
+    .card-info{padding:14px 4px 5px;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+    .card-info h3{font-size:16px;line-height:1.15;margin:0 0 6px;letter-spacing:-.025em}
+    .card-info p{margin:0;color:var(--muted2);font-size:11px}
+    .duration{font-size:10px;color:var(--muted2);white-space:nowrap;margin-top:2px}
+
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .service{border-radius:var(--radius);padding:28px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between}
+    .service-top{display:flex;justify-content:space-between;align-items:center}.service-index{font-size:11px;color:#cbd7ff;font-weight:800}.service-icon{font-size:22px;opacity:.75}
+    .service h3{font-size:24px;letter-spacing:-.04em;margin:0 0 10px}.service p{color:var(--muted);font-size:14px;margin:0}
+
+    .experience-wrap{display:grid;grid-template-columns:1.45fr .55fr;gap:16px}
+    .experience-card,.experience-side{border-radius:var(--radius);padding:32px}
+    .experience-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:46px}
+    .experience-date{font-size:12px;color:var(--muted)}
+    .pill{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid var(--line);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#d9e4ff}
+    .experience-card h3{font-size:clamp(30px,4vw,46px);letter-spacing:-.05em;margin:0 0 16px;line-height:1}
+    .experience-card p{color:var(--muted);font-size:15px;max-width:760px;margin:0}
+    .experience-side{display:flex;flex-direction:column;justify-content:space-between}
+    .experience-side span{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#c7d5ff;font-weight:800}
+    .stack{display:flex;flex-direction:column;gap:10px;margin-top:54px}
+    .stack strong{font-size:15px;font-weight:650;padding-bottom:10px;border-bottom:1px solid var(--line-soft)}
+
+    .more-work{padding:66px 0 90px}
+    .more-card{border-radius:36px;padding:clamp(30px,5vw,58px);display:grid;grid-template-columns:1fr auto;gap:42px;align-items:end;position:relative;overflow:hidden}
+    .more-card::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-110px;bottom:-150px;background:radial-gradient(circle,rgba(124,155,255,.28),transparent 65%);pointer-events:none}
+    .more-card h2{font-size:clamp(38px,5.5vw,72px);line-height:.96;letter-spacing:-.06em;margin:10px 0 16px;max-width:760px}
+    .more-card p{max-width:680px;color:var(--muted);margin:0}
+    .more-card .btn{position:relative;z-index:1}
+
+    .cta{padding:0 0 80px}
+    .cta-card{border-radius:36px;padding:48px;display:flex;align-items:flex-end;justify-content:space-between;gap:28px}
+    .cta-card h2{font-size:clamp(34px,4.6vw,58px);letter-spacing:-.055em;line-height:1;margin:8px 0 0;max-width:760px}
+    .cta-card p{max-width:360px;margin:0;color:var(--muted);font-size:14px}
+
+    footer{padding:0 0 40px;color:var(--muted2);font-size:11px}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line-soft);padding-top:24px}
+    footer a{text-decoration:none;color:var(--muted2)}
+
+    dialog.video-modal{width:min(880px,calc(100% - 24px));border:1px solid var(--line);border-radius:30px;padding:16px;background:rgba(9,13,24,.78);color:white;box-shadow:0 40px 120px rgba(0,0,0,.55);backdrop-filter:blur(30px)}
+    dialog.video-modal::backdrop{background:rgba(3,5,11,.72);backdrop-filter:blur(12px)}
+    .modal-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px 6px 14px}
+    .modal-head h3{margin:0;font-size:18px}.modal-actions{display:flex;align-items:center;gap:10px}.modal-actions a{font-size:11px;color:var(--muted);text-decoration:none}.close{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:white;font-size:22px;cursor:pointer}
+    .video-frame{height:min(76vh,760px);border-radius:22px;overflow:hidden;background:#05070c}.video-frame iframe{width:100%;height:100%;border:0}
+
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:920px){
+      .hero-bottom,.cta-card{align-items:flex-start;flex-direction:column}
+      .hero-stats{width:100%;min-width:0}
+      .section-head{grid-template-columns:1fr;gap:18px;align-items:start}
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+      .experience-wrap{grid-template-columns:1fr}
+      .more-card{grid-template-columns:1fr;align-items:start}
+    }
+
+    @media(max-width:620px){
+      :root{--shell:min(100% - 24px,1180px)}
+      .nav-wrap{top:8px;padding-top:8px}.nav{min-height:58px;padding-left:14px}.nav nav{display:none}
+      .hero{padding:42px 0 44px}.hero-card{min-height:560px;border-radius:28px;padding:28px}.hero h1{font-size:clamp(48px,17vw,72px)}.hero-bottom{margin-top:48px}
+      .hero-stats{grid-template-columns:1fr 1fr}.hero-stats .stat:last-child{grid-column:1/-1}
+      section.content-section{padding:48px 0}.projects-grid{grid-template-columns:1fr 1fr;gap:10px}.project-card{padding:8px;border-radius:20px}.poster{border-radius:15px}.play{opacity:1;width:44px;height:44px;font-size:12px}.card-info{display:block}.duration{display:none}.card-info h3{font-size:13px}.card-info p{font-size:9px}
+      .service-grid{grid-template-columns:1fr}.service{min-height:210px;padding:24px}
+      .experience-card,.experience-side{padding:24px;border-radius:22px}.experience-top{margin-bottom:34px}.more-work{padding:48px 0 64px}.more-card{border-radius:26px;padding:28px}.cta{padding-bottom:56px}.cta-card{padding:30px;border-radius:26px}.video-frame{height:72vh}
+      .footer-inner{flex-direction:column}
+    }
+  </style>
 </head>
 <body>
-  <div class="noise"></div>
-  <header class="nav shell">
-    <a class="brand" href="#top" aria-label="На главную">
-      <span class="brand-dot"></span>
-      <span>VADIM / VIDEO EDITOR</span>
-    </a>
-    <nav>
-      <a href="#work">Работы</a>
-      <a href="#services">Что делаю</a>
-      <a href="#experience">Опыт</a>
-    </nav>
-  </header>
+  <div class="nav-wrap shell">
+    <header class="nav glass">
+      <a class="brand" href="#top"><span class="brand-dot"></span><span>VADIM / VIDEO EDITOR</span></a>
+      <nav>
+        <a href="#work">Работы</a>
+        <a href="#services">Навыки</a>
+        <a href="#experience">Опыт</a>
+      </nav>
+    </header>
+  </div>
 
   <main id="top">
     <section class="hero shell">
-      <div class="hero-kicker">SHORT-FORM VIDEO EDITING</div>
-      <h1>Монтаж, который<br><span>держит внимание.</span></h1>
-      <p class="hero-copy">Reels & Shorts: структура, темп, субтитры, B-roll, музыка и sound design.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="#work">Смотреть работы</a>
-        <a class="btn ghost" href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener">Google Drive ↗</a>
-      </div>
-      <div class="hero-meta">
-        <div><strong>9:16</strong><span>Vertical-first</span></div>
-        <div><strong>Premiere Pro</strong><span>Main workflow</span></div>
-        <div><strong>Freelance</strong><span>Available</span></div>
-      </div>
-    </section>
-
-    <section class="featured shell" id="work">
-      <div class="section-head">
+      <div class="hero-card glass reveal">
         <div>
-          <div class="eyebrow">FEATURED</div>
-          <h2>Сначала — лучшее.</h2>
+          <div class="kicker">SHORT-FORM VIDEO EDITING</div>
+          <h1>Монтаж, который<br><span>держит внимание.</span></h1>
+          <p class="hero-copy">Reels & Shorts: структура, темп, субтитры, B-roll, музыка и sound design.</p>
         </div>
-        <p>Здесь не весь архив, а отобранные работы, которые лучше всего показывают мой монтаж.</p>
+        <div class="hero-bottom">
+          <div class="hero-actions">
+            <a class="btn primary" href="#work">Смотреть работы</a>
+            <a class="btn glass-btn" href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener">Все видео ↗</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><strong>9:16</strong><span>Vertical-first</span></div>
+            <div class="stat"><strong>Premiere Pro</strong><span>Main workflow</span></div>
+            <div class="stat"><strong>Freelance</strong><span>Available</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section shell" id="work">
+      <div class="section-head reveal">
+        <div><div class="eyebrow">SELECTED WORK</div><h2>Лучшие работы.</h2></div>
+        <p>На сайте — только отобранные проекты. Полный архив оставляю в Google Drive, чтобы здесь всё было быстро и аккуратно.</p>
       </div>
 
-      <div class="featured-grid">
-        <article class="project-card project-card--large" data-category="story" data-video="15ssT-Fh4Mrq714Waiqy9H5E0WGPnHRPQ" data-title="ARTIST" data-drive="https://drive.google.com/file/d/15ssT-Fh4Mrq714Waiqy9H5E0WGPnHRPQ/view?usp=sharing">
-          <button class="poster" aria-label="Открыть ARTIST">
-            <img src="thumbs/artist.jpg" alt="Превью проекта ARTIST" />
-            <span class="play">▶</span>
-            <span class="rank">01</span>
-          </button>
-          <div class="card-copy"><div><h3>ARTIST</h3><p>Story-driven Reels · captions · pacing</p></div><span>40 sec</span></div>
+      <div class="projects-grid">
+        <article class="project-card glass reveal" data-video="15ssT-Fh4Mrq714Waiqy9H5E0WGPnHRPQ" data-title="ARTIST" data-drive="https://drive.google.com/file/d/15ssT-Fh4Mrq714Waiqy9H5E0WGPnHRPQ/view?usp=sharing">
+          <button class="poster" aria-label="Открыть ARTIST"><img src="thumbs/artist.jpg" alt="ARTIST" /><span class="number">01 / Featured</span><span class="play">▶</span></button>
+          <div class="card-info"><div><h3>ARTIST</h3><p>Story-driven Reels · captions · pacing</p></div><span class="duration">40 sec</span></div>
         </article>
 
-        <article class="project-card" data-category="story" data-video="18WcRjx7i4mVRNI-795WADM6xROE-cGeX" data-title="Полностью поменяй жизнь" data-drive="https://drive.google.com/file/d/18WcRjx7i4mVRNI-795WADM6xROE-cGeX/view?usp=sharing">
-          <button class="poster" aria-label="Открыть Полностью поменяй жизнь">
-            <img src="thumbs/life.jpg" alt="Превью проекта Полностью поменяй жизнь" />
-            <span class="play">▶</span><span class="rank">02</span>
-          </button>
-          <div class="card-copy"><div><h3>Полностью поменяй жизнь</h3><p>Talking head · hook · subtitles</p></div><span>63 sec</span></div>
+        <article class="project-card glass reveal" data-video="18WcRjx7i4mVRNI-795WADM6xROE-cGeX" data-title="Полностью поменяй жизнь" data-drive="https://drive.google.com/file/d/18WcRjx7i4mVRNI-795WADM6xROE-cGeX/view?usp=sharing">
+          <button class="poster" aria-label="Открыть Полностью поменяй жизнь"><img src="thumbs/life.jpg" alt="Полностью поменяй жизнь" /><span class="number">02</span><span class="play">▶</span></button>
+          <div class="card-info"><div><h3>Полностью поменяй жизнь</h3><p>Talking head · hook · subtitles</p></div><span class="duration">63 sec</span></div>
         </article>
 
-        <article class="project-card" data-category="visual" data-video="15IR0-SgFdlHUSdKWmZXhWXZ3_NXgBG4t" data-title="КВАРТИРА" data-drive="https://drive.google.com/file/d/15IR0-SgFdlHUSdKWmZXhWXZ3_NXgBG4t/view?usp=sharing">
-          <button class="poster" aria-label="Открыть КВАРТИРА">
-            <img src="thumbs/apartment.jpg" alt="Превью проекта КВАРТИРА" />
-            <span class="play">▶</span><span class="rank">03</span>
-          </button>
-          <div class="card-copy"><div><h3>КВАРТИРА</h3><p>Dynamic edit · inserts · visual rhythm</p></div><span>47 sec</span></div>
+        <article class="project-card glass reveal" data-video="15IR0-SgFdlHUSdKWmZXhWXZ3_NXgBG4t" data-title="КВАРТИРА" data-drive="https://drive.google.com/file/d/15IR0-SgFdlHUSdKWmZXhWXZ3_NXgBG4t/view?usp=sharing">
+          <button class="poster" aria-label="Открыть КВАРТИРА"><img src="thumbs/apartment.jpg" alt="КВАРТИРА" /><span class="number">03</span><span class="play">▶</span></button>
+          <div class="card-info"><div><h3>КВАРТИРА</h3><p>Dynamic edit · inserts · visual rhythm</p></div><span class="duration">47 sec</span></div>
+        </article>
+
+        <article class="project-card glass reveal" data-video="1Q_RT-Lnbx1cKti7JA3koKhp4cTAjS8HT" data-title="Продвижение в соцсетях" data-drive="https://drive.google.com/file/d/1Q_RT-Lnbx1cKti7JA3koKhp4cTAjS8HT/view?usp=sharing">
+          <button class="poster" aria-label="Открыть Продвижение в соцсетях"><img src="thumbs/social.jpg" alt="Продвижение в соцсетях" /><span class="number">04</span><span class="play">▶</span></button>
+          <div class="card-info"><div><h3>Продвижение в соцсетях</h3><p>Expert Reels · captions</p></div><span class="duration">23 sec</span></div>
+        </article>
+
+        <article class="project-card glass reveal" data-video="1Tk_WYD3aZsiYjFCfjOhLySS2mKLJ1_xe" data-title="Claude" data-drive="https://drive.google.com/file/d/1Tk_WYD3aZsiYjFCfjOhLySS2mKLJ1_xe/view?usp=sharing">
+          <button class="poster" aria-label="Открыть Claude"><img src="thumbs/claude.jpg" alt="Claude" /><span class="number">05</span><span class="play">▶</span></button>
+          <div class="card-info"><div><h3>Claude</h3><p>Tech / AI · screen inserts</p></div><span class="duration">44 sec</span></div>
+        </article>
+
+        <article class="project-card glass reveal" data-video="1zBiXUWP8P14IML0VvLMtUq6CZ1O7cR0d" data-title="FOOD" data-drive="https://drive.google.com/file/d/1zBiXUWP8P14IML0VvLMtUq6CZ1O7cR0d/view?usp=sharing">
+          <button class="poster" aria-label="Открыть FOOD"><img src="thumbs/food.jpg" alt="FOOD" /><span class="number">06</span><span class="play">▶</span></button>
+          <div class="card-info"><div><h3>FOOD</h3><p>Product / lifestyle · visual edit</p></div><span class="duration">15 sec</span></div>
         </article>
       </div>
     </section>
 
-    <section class="all-work shell">
-      <div class="section-head compact">
-        <div><div class="eyebrow">SELECTED WORK</div><h2>Ещё работы.</h2></div>
-        <div class="filters" role="group" aria-label="Фильтр работ">
-          <button class="filter active" data-filter="all">Все</button>
-          <button class="filter" data-filter="story">Talking / Story</button>
-          <button class="filter" data-filter="visual">Visual</button>
-          <button class="filter" data-filter="tech">Tech</button>
-        </div>
-      </div>
-
-      <div class="work-grid">
-        <article class="project-card small" data-category="story" data-video="1Q_RT-Lnbx1cKti7JA3koKhp4cTAjS8HT" data-title="Продвижение в соцсетях" data-drive="https://drive.google.com/file/d/1Q_RT-Lnbx1cKti7JA3koKhp4cTAjS8HT/view?usp=sharing">
-          <button class="poster" aria-label="Открыть Продвижение в соцсетях"><img src="thumbs/social.jpg" alt="Превью проекта про продвижение" /><span class="play">▶</span></button>
-          <div class="card-copy"><div><h3>Продвижение в соцсетях</h3><p>Expert Reels · captions</p></div><span>23 sec</span></div>
-        </article>
-
-        <article class="project-card small" data-category="tech" data-video="1Tk_WYD3aZsiYjFCfjOhLySS2mKLJ1_xe" data-title="Claude" data-drive="https://drive.google.com/file/d/1Tk_WYD3aZsiYjFCfjOhLySS2mKLJ1_xe/view?usp=sharing">
-          <button class="poster" aria-label="Открыть Claude"><img src="thumbs/claude.jpg" alt="Превью проекта Claude" /><span class="play">▶</span></button>
-          <div class="card-copy"><div><h3>Claude</h3><p>Tech / AI · screen inserts</p></div><span>44 sec</span></div>
-        </article>
-
-        <article class="project-card small" data-category="visual" data-video="1zBiXUWP8P14IML0VvLMtUq6CZ1O7cR0d" data-title="FOOD" data-drive="https://drive.google.com/file/d/1zBiXUWP8P14IML0VvLMtUq6CZ1O7cR0d/view?usp=sharing">
-          <button class="poster" aria-label="Открыть FOOD"><img src="thumbs/food.jpg" alt="Превью проекта FOOD" /><span class="play">▶</span></button>
-          <div class="card-copy"><div><h3>FOOD</h3><p>Product / lifestyle · fast visual edit</p></div><span>15 sec</span></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="services shell" id="services">
-      <div class="section-head">
+    <section class="content-section shell" id="services">
+      <div class="section-head reveal">
         <div><div class="eyebrow">WHAT I DO</div><h2>Не просто склейки.</h2></div>
-        <p>Работаю не только с картинкой, но и с тем, как зритель воспринимает историю.</p>
+        <p>Собираю ролик как историю: сначала структура и ритм, потом визуальные акценты, звук и финальная полировка.</p>
       </div>
       <div class="service-grid">
-        <div class="service"><span>01</span><h3>Structure & pacing</h3><p>Сокращаю длинный исходник, перестраиваю фразы и быстрее вывожу ролик к сильной мысли.</p></div>
-        <div class="service"><span>02</span><h3>Captions & visuals</h3><p>Субтитры, B-roll, screen inserts и акценты без визуального перегруза.</p></div>
-        <div class="service"><span>03</span><h3>Sound & polish</h3><p>Музыка, SFX, базовая работа со звуком и финальная полировка вертикального видео.</p></div>
+        <div class="service glass reveal"><div class="service-top"><span class="service-index">01</span><span class="service-icon">⌁</span></div><div><h3>Structure & pacing</h3><p>Сокращаю длинный исходник, переставляю смысловые части и быстрее вывожу ролик к сильной мысли.</p></div></div>
+        <div class="service glass reveal"><div class="service-top"><span class="service-index">02</span><span class="service-icon">◫</span></div><div><h3>Captions & visuals</h3><p>Субтитры, B-roll, screen inserts, маски и акценты без визуального перегруза.</p></div></div>
+        <div class="service glass reveal"><div class="service-top"><span class="service-index">03</span><span class="service-icon">⌁</span></div><div><h3>Sound & polish</h3><p>Музыка, SFX, базовая обработка звука и финальная полировка вертикального видео.</p></div></div>
       </div>
     </section>
 
-    <section class="experience shell" id="experience">
-      <div class="section-head">
-        <div><div class="eyebrow">EXPERIENCE</div><h2>Опыт и практика.</h2></div>
-        <p>Эта секция будет расти вместе с реальными проектами: здесь будут появляться клиенты, роли и результаты.</p>
+    <section class="content-section shell" id="experience">
+      <div class="section-head reveal">
+        <div><div class="eyebrow">EXPERIENCE</div><h2>Опыт.</h2></div>
+        <p>Эта часть будет обновляться по мере реальных проектов — роли, клиенты и конкретные результаты можно добавлять без переделки всего сайта.</p>
       </div>
-      <div class="experience-card">
-        <div class="experience-main">
-          <div class="experience-topline">
-            <span class="experience-date">2026 — Present</span>
-            <span class="experience-status">Open to projects</span>
-          </div>
+      <div class="experience-wrap">
+        <article class="experience-card glass reveal">
+          <div class="experience-top"><span class="experience-date">2026 — Present</span><span class="pill">Open to projects</span></div>
           <h3>Independent Video Editor</h3>
-          <p>Short-form монтаж для портфолио, тестовых заданий и независимых проектов. Основной фокус — Reels / Shorts, talking-head, структура истории, субтитры, B-roll и sound design.</p>
-        </div>
-        <div class="experience-side">
+          <p>Работаю с short-form видео и развиваю монтаж в разных форматах: talking-head, story-driven Reels, lifestyle и tech. Основной фокус — удержание внимания, структура, субтитры, B-roll и sound design.</p>
+        </article>
+        <aside class="experience-side glass reveal">
           <span>Focus</span>
-          <strong>Reels / Shorts</strong>
-          <strong>Talking-head</strong>
-          <strong>Story structure</strong>
-        </div>
+          <div class="stack"><strong>Reels / Shorts</strong><strong>Talking-head</strong><strong>Story structure</strong><strong>Premiere Pro</strong></div>
+        </aside>
       </div>
     </section>
 
     <section class="more-work shell">
-      <div class="more-work-inner">
-        <div>
-          <div class="eyebrow">MORE WORK</div>
-          <h2>Хотите посмотреть больше?</h2>
-          <p>На сайте — только выбранные работы. Полный архив монтажей, дополнительных примеров и экспериментов лежит в Google Drive.</p>
-        </div>
-        <a class="btn primary more-work-btn" href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener">Все работы в Google Drive ↗</a>
+      <div class="more-card glass reveal">
+        <div><div class="eyebrow">MORE WORK</div><h2>Ещё больше монтажей.</h2><p>Здесь — только выбранные работы. Полный архив видео и дополнительных примеров можно посмотреть в Google Drive.</p></div>
+        <a class="btn primary" href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener">Открыть все работы ↗</a>
       </div>
     </section>
 
     <section class="cta shell">
-      <div><div class="eyebrow">AVAILABLE FOR FREELANCE</div><h2>Есть ролик — соберём его сильнее.</h2></div>
-      <p>Если вы получили эту ссылку от меня в Telegram — просто ответьте на сообщение, и обсудим задачу.</p>
+      <div class="cta-card glass reveal">
+        <div><div class="eyebrow">AVAILABLE FOR FREELANCE</div><h2>Есть материал — сделаю из него сильный ролик.</h2></div>
+        <p>Если вы получили эту ссылку от меня в Telegram, просто ответьте на сообщение — обсудим задачу и формат работы.</p>
+      </div>
     </section>
   </main>
 
-  <footer class="footer shell">
-    <span>© 2026 Vadim / Video Editor</span>
-    <a href="#top">Наверх ↑</a>
-  </footer>
+  <footer class="shell"><div class="footer-inner"><span>© 2026 Vadim / Video Editor</span><a href="#top">Наверх ↑</a></div></footer>
 
   <dialog class="video-modal" id="videoModal">
-    <button class="modal-close" aria-label="Закрыть">×</button>
-    <div class="modal-top"><div><div class="eyebrow">PROJECT</div><h3 id="modalTitle">Project</h3></div><a id="driveLink" target="_blank" rel="noopener">Открыть в Drive ↗</a></div>
+    <div class="modal-head"><h3 id="modalTitle">Project</h3><div class="modal-actions"><a id="driveLink" target="_blank" rel="noopener">Открыть в Drive ↗</a><button class="close" aria-label="Закрыть">×</button></div></div>
     <div class="video-frame"><iframe id="videoFrame" title="Видео проекта" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
   </dialog>
 
-  <script src="script.js"></script>
+  <script>
+    const modal=document.getElementById('videoModal');
+    const frame=document.getElementById('videoFrame');
+    const modalTitle=document.getElementById('modalTitle');
+    const driveLink=document.getElementById('driveLink');
+
+    function openProject(card){
+      const id=card.dataset.video;
+      modalTitle.textContent=card.dataset.title;
+      driveLink.href=card.dataset.drive;
+      frame.src=`https://drive.google.com/file/d/${id}/preview`;
+      modal.showModal();
+    }
+    document.querySelectorAll('.project-card .poster').forEach(btn=>btn.addEventListener('click',()=>openProject(btn.closest('.project-card'))));
+    function closeModal(){frame.src='';if(modal.open)modal.close();}
+    document.querySelector('.close').addEventListener('click',closeModal);
+    modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}})
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
 </body>
 </html>
