@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Vadim — video editor. Reels, Shorts, talking-head and story-driven short-form editing." />
+  <meta name="description" content="Вадим — видеомонтажёр. Монтаж Reels и Shorts: структура, темп, субтитры, B-roll и звук." />
   <meta name="theme-color" content="#0a0f1a" />
-  <title>Vadim — Video Editor</title>
+  <title>Вадим — Видеомонтажёр</title>
   <style>
     :root{
       --bg:#070a12;
@@ -102,7 +102,8 @@
     }
     .kicker,.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:#c7d5ff}
     .hero h1{font-size:clamp(54px,8.5vw,116px);line-height:.90;letter-spacing:-.07em;margin:22px 0 26px;max-width:930px}
-    .hero h1 span{color:rgba(241,245,255,.45)}
+    .hero-line{display:block;color:var(--text);white-space:nowrap}
+    .hero-line-muted{color:rgba(241,245,255,.45)}
     .hero-copy{font-size:clamp(18px,2vw,24px);max-width:720px;color:#c0c7d7;margin:0}
     .hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-top:70px}
     .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
@@ -173,6 +174,15 @@
     .modal-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px 6px 14px}
     .modal-head h3{margin:0;font-size:18px}.modal-actions{display:flex;align-items:center;gap:10px}.modal-actions a{font-size:11px;color:var(--muted);text-decoration:none}.close{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:white;font-size:22px;cursor:pointer}
     .video-frame{height:min(76vh,760px);border-radius:22px;overflow:hidden;background:#05070c}.video-frame iframe{width:100%;height:100%;border:0}
+    .mobile-video-preview{display:none}
+    .mobile-preview-poster{position:relative;overflow:hidden;border-radius:22px;aspect-ratio:9/13;background:#080b13;border:1px solid rgba(255,255,255,.10)}
+    .mobile-preview-poster img{width:100%;height:100%;object-fit:cover;display:block}
+    .mobile-preview-poster:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,6,12,.78) 0%,rgba(4,6,12,.08) 50%,rgba(4,6,12,.12) 100%);pointer-events:none}
+    .mobile-preview-content{position:absolute;z-index:2;left:18px;right:18px;bottom:18px}
+    .mobile-preview-label{font-size:10px;letter-spacing:.16em;font-weight:800;color:rgba(255,255,255,.72);margin-bottom:8px}
+    .mobile-preview-content h4{margin:0 0 14px;font-size:24px;letter-spacing:-.04em}
+    .mobile-watch-btn{display:flex;align-items:center;justify-content:center;width:100%;padding:15px 18px;border-radius:999px;background:rgba(255,255,255,.94);color:#0b0e16;text-decoration:none;font-size:14px;font-weight:800;box-shadow:0 10px 35px rgba(0,0,0,.28)}
+    .mobile-preview-note{margin:12px 2px 0;color:var(--muted);font-size:11px;text-align:center}
 
     .reveal{opacity:0;transform:translateY(16px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
 
@@ -188,19 +198,25 @@
     @media(max-width:620px){
       :root{--shell:min(100% - 24px,1180px)}
       .nav-wrap{top:8px;padding-top:8px}.nav{min-height:58px;padding-left:14px}.nav nav{display:none}
-      .hero{padding:42px 0 44px}.hero-card{min-height:560px;border-radius:28px;padding:28px}.hero h1{font-size:clamp(48px,17vw,72px)}.hero-bottom{margin-top:48px}
-      .hero-stats{grid-template-columns:1fr 1fr}.hero-stats .stat:last-child{grid-column:1/-1}
+      .hero{padding:42px 0 44px}.hero-card{min-height:560px;border-radius:28px;padding:28px 24px}.hero h1{font-size:clamp(32px,9.2vw,36px);line-height:.96;letter-spacing:-.055em}.hero-line{white-space:nowrap}.hero-bottom{margin-top:48px}
+      .hero-copy{font-size:17px}.hero-stats{grid-template-columns:1fr 1fr}.hero-stats .stat:last-child{grid-column:1/-1}
       section.content-section{padding:48px 0}.projects-grid{grid-template-columns:1fr 1fr;gap:10px}.project-card{padding:8px;border-radius:20px}.poster{border-radius:15px}.play{opacity:1;width:44px;height:44px;font-size:12px}.card-info{display:block}.duration{display:none}.card-info h3{font-size:13px}.card-info p{font-size:9px}
       .service-grid{grid-template-columns:1fr}.service{min-height:210px;padding:24px}
       .experience-card,.experience-side{padding:24px;border-radius:22px}.experience-top{margin-bottom:34px}.more-work{padding:48px 0 64px}.more-card{border-radius:26px;padding:28px}.cta{padding-bottom:56px}.cta-card{padding:30px;border-radius:26px}.video-frame{height:72vh}
       .footer-inner{flex-direction:column}
+      dialog.video-modal{width:calc(100% - 24px);padding:12px;border-radius:26px;background:rgba(8,12,22,.88);backdrop-filter:blur(28px)}
+      .modal-head{padding:6px 4px 12px}.modal-actions>a{display:none}.modal-head h3{font-size:17px}
+      .video-frame{display:none}
+      .mobile-video-preview{display:block}
+      .close{width:42px;height:42px;font-size:24px}
+
     }
   </style>
 </head>
 <body>
   <div class="nav-wrap shell">
     <header class="nav glass">
-      <a class="brand" href="#top"><span class="brand-dot"></span><span>VADIM / VIDEO EDITOR</span></a>
+      <a class="brand" href="#top"><span class="brand-dot"></span><span>ВАДИМ / ВИДЕОМОНТАЖ</span></a>
       <nav>
         <a href="#work">Работы</a>
         <a href="#services">Навыки</a>
@@ -213,9 +229,9 @@
     <section class="hero shell">
       <div class="hero-card glass reveal">
         <div>
-          <div class="kicker">SHORT-FORM VIDEO EDITING</div>
-          <h1>Монтаж, который<br><span>держит внимание.</span></h1>
-          <p class="hero-copy">Reels & Shorts: структура, темп, субтитры, B-roll, музыка и sound design.</p>
+          <div class="kicker">МОНТАЖ REELS И SHORTS</div>
+          <h1><span class="hero-line">Видеомонтаж для</span><span class="hero-line hero-line-muted">Reels и Shorts.</span></h1>
+          <p class="hero-copy">Reels и Shorts: структура, темп, субтитры, B-roll, музыка и звуковое оформление.</p>
         </div>
         <div class="hero-bottom">
           <div class="hero-actions">
@@ -223,9 +239,9 @@
             <a class="btn glass-btn" href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener">Все видео ↗</a>
           </div>
           <div class="hero-stats">
-            <div class="stat"><strong>9:16</strong><span>Vertical-first</span></div>
-            <div class="stat"><strong>Premiere Pro</strong><span>Main workflow</span></div>
-            <div class="stat"><strong>Freelance</strong><span>Available</span></div>
+            <div class="stat"><strong>9:16</strong><span>Вертикальный формат</span></div>
+            <div class="stat"><strong>Premiere Pro</strong><span>Основной инструмент</span></div>
+            <div class="stat"><strong>Фриланс</strong><span>Готов к проектам</span></div>
           </div>
         </div>
       </div>
@@ -233,93 +249,104 @@
 
     <section class="content-section shell" id="work">
       <div class="section-head reveal">
-        <div><div class="eyebrow">SELECTED WORK</div><h2>Лучшие работы.</h2></div>
+        <div><div class="eyebrow">ИЗБРАННЫЕ РАБОТЫ</div><h2>Избранные работы.</h2></div>
         <p>На сайте — только отобранные проекты. Полный архив оставляю в Google Drive, чтобы здесь всё было быстро и аккуратно.</p>
       </div>
 
       <div class="projects-grid">
         <article class="project-card glass reveal" data-video="15ssT-Fh4Mrq714Waiqy9H5E0WGPnHRPQ" data-title="ARTIST" data-drive="https://drive.google.com/file/d/15ssT-Fh4Mrq714Waiqy9H5E0WGPnHRPQ/view?usp=sharing">
-          <button class="poster" aria-label="Открыть ARTIST"><img src="thumbs/artist.jpg" alt="ARTIST" /><span class="number">01 / Featured</span><span class="play">▶</span></button>
-          <div class="card-info"><div><h3>ARTIST</h3><p>Story-driven Reels · captions · pacing</p></div><span class="duration">40 sec</span></div>
+          <button class="poster" aria-label="Открыть ARTIST"><img src="thumbs/artist.jpg" alt="ARTIST" /><span class="number">01 / Главное</span><span class="play">▶</span></button>
+          <div class="card-info"><div><h3>ARTIST</h3><p>Сторителлинг · субтитры · темп</p></div><span class="duration">40 sec</span></div>
         </article>
 
         <article class="project-card glass reveal" data-video="18WcRjx7i4mVRNI-795WADM6xROE-cGeX" data-title="Полностью поменяй жизнь" data-drive="https://drive.google.com/file/d/18WcRjx7i4mVRNI-795WADM6xROE-cGeX/view?usp=sharing">
           <button class="poster" aria-label="Открыть Полностью поменяй жизнь"><img src="thumbs/life.jpg" alt="Полностью поменяй жизнь" /><span class="number">02</span><span class="play">▶</span></button>
-          <div class="card-info"><div><h3>Полностью поменяй жизнь</h3><p>Talking head · hook · subtitles</p></div><span class="duration">63 sec</span></div>
+          <div class="card-info"><div><h3>Полностью поменяй жизнь</h3><p>Разговорный ролик · хук · субтитры</p></div><span class="duration">63 sec</span></div>
         </article>
 
         <article class="project-card glass reveal" data-video="15IR0-SgFdlHUSdKWmZXhWXZ3_NXgBG4t" data-title="КВАРТИРА" data-drive="https://drive.google.com/file/d/15IR0-SgFdlHUSdKWmZXhWXZ3_NXgBG4t/view?usp=sharing">
           <button class="poster" aria-label="Открыть КВАРТИРА"><img src="thumbs/apartment.jpg" alt="КВАРТИРА" /><span class="number">03</span><span class="play">▶</span></button>
-          <div class="card-info"><div><h3>КВАРТИРА</h3><p>Dynamic edit · inserts · visual rhythm</p></div><span class="duration">47 sec</span></div>
+          <div class="card-info"><div><h3>КВАРТИРА</h3><p>Динамичный монтаж · вставки · визуальный ритм</p></div><span class="duration">47 sec</span></div>
         </article>
 
         <article class="project-card glass reveal" data-video="1Q_RT-Lnbx1cKti7JA3koKhp4cTAjS8HT" data-title="Продвижение в соцсетях" data-drive="https://drive.google.com/file/d/1Q_RT-Lnbx1cKti7JA3koKhp4cTAjS8HT/view?usp=sharing">
           <button class="poster" aria-label="Открыть Продвижение в соцсетях"><img src="thumbs/social.jpg" alt="Продвижение в соцсетях" /><span class="number">04</span><span class="play">▶</span></button>
-          <div class="card-info"><div><h3>Продвижение в соцсетях</h3><p>Expert Reels · captions</p></div><span class="duration">23 sec</span></div>
+          <div class="card-info"><div><h3>Продвижение в соцсетях</h3><p>Экспертный Reels · субтитры</p></div><span class="duration">23 sec</span></div>
         </article>
 
         <article class="project-card glass reveal" data-video="1Tk_WYD3aZsiYjFCfjOhLySS2mKLJ1_xe" data-title="Claude" data-drive="https://drive.google.com/file/d/1Tk_WYD3aZsiYjFCfjOhLySS2mKLJ1_xe/view?usp=sharing">
           <button class="poster" aria-label="Открыть Claude"><img src="thumbs/claude.jpg" alt="Claude" /><span class="number">05</span><span class="play">▶</span></button>
-          <div class="card-info"><div><h3>Claude</h3><p>Tech / AI · screen inserts</p></div><span class="duration">44 sec</span></div>
+          <div class="card-info"><div><h3>Claude</h3><p>Технологии / ИИ · экранные вставки</p></div><span class="duration">44 sec</span></div>
         </article>
 
         <article class="project-card glass reveal" data-video="1zBiXUWP8P14IML0VvLMtUq6CZ1O7cR0d" data-title="FOOD" data-drive="https://drive.google.com/file/d/1zBiXUWP8P14IML0VvLMtUq6CZ1O7cR0d/view?usp=sharing">
           <button class="poster" aria-label="Открыть FOOD"><img src="thumbs/food.jpg" alt="FOOD" /><span class="number">06</span><span class="play">▶</span></button>
-          <div class="card-info"><div><h3>FOOD</h3><p>Product / lifestyle · visual edit</p></div><span class="duration">15 sec</span></div>
+          <div class="card-info"><div><h3>FOOD</h3><p>Продукт / лайфстайл · визуальный монтаж</p></div><span class="duration">15 sec</span></div>
         </article>
       </div>
     </section>
 
     <section class="content-section shell" id="services">
       <div class="section-head reveal">
-        <div><div class="eyebrow">WHAT I DO</div><h2>Не просто склейки.</h2></div>
-        <p>Собираю ролик как историю: сначала структура и ритм, потом визуальные акценты, звук и финальная полировка.</p>
+        <div><div class="eyebrow">ЧТО Я ДЕЛАЮ</div><h2>Монтаж и оформление.</h2></div>
+        <p>Работаю со структурой исходника, темпом, субтитрами, визуальными вставками и звуком.</p>
       </div>
       <div class="service-grid">
-        <div class="service glass reveal"><div class="service-top"><span class="service-index">01</span><span class="service-icon">⌁</span></div><div><h3>Structure & pacing</h3><p>Сокращаю длинный исходник, переставляю смысловые части и быстрее вывожу ролик к сильной мысли.</p></div></div>
-        <div class="service glass reveal"><div class="service-top"><span class="service-index">02</span><span class="service-icon">◫</span></div><div><h3>Captions & visuals</h3><p>Субтитры, B-roll, screen inserts, маски и акценты без визуального перегруза.</p></div></div>
-        <div class="service glass reveal"><div class="service-top"><span class="service-index">03</span><span class="service-icon">⌁</span></div><div><h3>Sound & polish</h3><p>Музыка, SFX, базовая обработка звука и финальная полировка вертикального видео.</p></div></div>
+        <div class="service glass reveal"><div class="service-top"><span class="service-index">01</span><span class="service-icon">⌁</span></div><div><h3>Структура и темп</h3><p>Сокращаю длинный исходник, убираю лишнее и при необходимости переставляю смысловые части.</p></div></div>
+        <div class="service glass reveal"><div class="service-top"><span class="service-index">02</span><span class="service-icon">◫</span></div><div><h3>Субтитры и визуал</h3><p>Субтитры, B-roll, экранные вставки, маски и акценты без визуального перегруза.</p></div></div>
+        <div class="service glass reveal"><div class="service-top"><span class="service-index">03</span><span class="service-icon">⌁</span></div><div><h3>Звук и полировка</h3><p>Музыка, SFX, базовая обработка звука и финальная полировка вертикального видео.</p></div></div>
       </div>
     </section>
 
     <section class="content-section shell" id="experience">
       <div class="section-head reveal">
-        <div><div class="eyebrow">EXPERIENCE</div><h2>Опыт.</h2></div>
+        <div><div class="eyebrow">ОПЫТ</div><h2>Опыт.</h2></div>
         <p>Эта часть будет обновляться по мере реальных проектов — роли, клиенты и конкретные результаты можно добавлять без переделки всего сайта.</p>
       </div>
       <div class="experience-wrap">
         <article class="experience-card glass reveal">
-          <div class="experience-top"><span class="experience-date">2026 — Present</span><span class="pill">Open to projects</span></div>
-          <h3>Independent Video Editor</h3>
-          <p>Работаю с short-form видео и развиваю монтаж в разных форматах: talking-head, story-driven Reels, lifestyle и tech. Основной фокус — удержание внимания, структура, субтитры, B-roll и sound design.</p>
+          <div class="experience-top"><span class="experience-date">2026 — сейчас</span><span class="pill">Развиваю портфолио</span></div>
+          <h3>Практика и проекты по видеомонтажу</h3>
+          <p>Монтирую короткие видео разных форматов: разговорные Reels, сторителлинг, лайфстайл и технологический контент. Сейчас набираю практический опыт и пополняю портфолио.</p>
         </article>
         <aside class="experience-side glass reveal">
-          <span>Focus</span>
-          <div class="stack"><strong>Reels / Shorts</strong><strong>Talking-head</strong><strong>Story structure</strong><strong>Premiere Pro</strong></div>
+          <span>Основное</span>
+          <div class="stack"><strong>Reels / Shorts</strong><strong>Разговорные видео</strong><strong>Структура истории</strong><strong>Premiere Pro</strong></div>
         </aside>
       </div>
     </section>
 
     <section class="more-work shell">
       <div class="more-card glass reveal">
-        <div><div class="eyebrow">MORE WORK</div><h2>Ещё больше монтажей.</h2><p>Здесь — только выбранные работы. Полный архив видео и дополнительных примеров можно посмотреть в Google Drive.</p></div>
+        <div><div class="eyebrow">ЕЩЁ РАБОТЫ</div><h2>Ещё больше монтажей.</h2><p>Здесь — только выбранные работы. Полный архив видео и дополнительных примеров можно посмотреть в Google Drive.</p></div>
         <a class="btn primary" href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener">Открыть все работы ↗</a>
       </div>
     </section>
 
     <section class="cta shell">
       <div class="cta-card glass reveal">
-        <div><div class="eyebrow">AVAILABLE FOR FREELANCE</div><h2>Есть материал — сделаю из него сильный ролик.</h2></div>
+        <div><div class="eyebrow">ОТКРЫТ К ПРОЕКТАМ</div><h2>Нужен монтаж Reels или Shorts?</h2></div>
         <p>Если вы получили эту ссылку от меня в Telegram, просто ответьте на сообщение — обсудим задачу и формат работы.</p>
       </div>
     </section>
   </main>
 
-  <footer class="shell"><div class="footer-inner"><span>© 2026 Vadim / Video Editor</span><a href="#top">Наверх ↑</a></div></footer>
+  <footer class="shell"><div class="footer-inner"><span>© 2026 Вадим / Видеомонтаж</span><a href="#top">Наверх ↑</a></div></footer>
 
   <dialog class="video-modal" id="videoModal">
-    <div class="modal-head"><h3 id="modalTitle">Project</h3><div class="modal-actions"><a id="driveLink" target="_blank" rel="noopener">Открыть в Drive ↗</a><button class="close" aria-label="Закрыть">×</button></div></div>
+    <div class="modal-head"><h3 id="modalTitle">Проект</h3><div class="modal-actions"><a id="driveLink" target="_blank" rel="noopener">Открыть в Drive ↗</a><button class="close" aria-label="Закрыть">×</button></div></div>
     <div class="video-frame"><iframe id="videoFrame" title="Видео проекта" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+    <div class="mobile-video-preview">
+      <div class="mobile-preview-poster">
+        <img id="mobilePreviewImage" src="" alt="Превью проекта" />
+        <div class="mobile-preview-content">
+          <div class="mobile-preview-label">ВИДЕОПРОЕКТ</div>
+          <h4 id="mobilePreviewTitle">Проект</h4>
+          <a class="mobile-watch-btn" id="mobileWatchLink" target="_blank" rel="noopener">Смотреть видео ↗</a>
+        </div>
+      </div>
+      <p class="mobile-preview-note">Видео откроется отдельно — без громоздкого встроенного плеера.</p>
+    </div>
   </dialog>
 
   <script>
@@ -327,12 +354,27 @@
     const frame=document.getElementById('videoFrame');
     const modalTitle=document.getElementById('modalTitle');
     const driveLink=document.getElementById('driveLink');
+    const mobilePreviewImage=document.getElementById('mobilePreviewImage');
+    const mobilePreviewTitle=document.getElementById('mobilePreviewTitle');
+    const mobileWatchLink=document.getElementById('mobileWatchLink');
+    const isMobile=()=>window.matchMedia('(max-width: 620px)').matches;
 
     function openProject(card){
       const id=card.dataset.video;
-      modalTitle.textContent=card.dataset.title;
-      driveLink.href=card.dataset.drive;
-      frame.src=`https://drive.google.com/file/d/${id}/preview`;
+      const title=card.dataset.title;
+      const drive=card.dataset.drive;
+      const poster=card.querySelector('.poster img');
+
+      modalTitle.textContent=title;
+      driveLink.href=drive;
+      mobilePreviewTitle.textContent=title;
+      mobileWatchLink.href=drive;
+      mobilePreviewImage.src=poster ? poster.src : '';
+      mobilePreviewImage.alt=`Превью проекта ${title}`;
+
+      // On phones we deliberately do NOT load the Google Drive iframe.
+      // iOS otherwise replaces it with a huge system video-control overlay.
+      frame.src=isMobile() ? '' : `https://drive.google.com/file/d/${id}/preview`;
       modal.showModal();
     }
     document.querySelectorAll('.project-card .poster').forEach(btn=>btn.addEventListener('click',()=>openProject(btn.closest('.project-card'))));
