@@ -118,6 +118,9 @@ section{
   text-decoration:none;
   min-width:0;
 }
+.work-grid .project:last-child{
+  grid-column:2;
+}
 .thumb{
   width:100%;
   aspect-ratio:9/16;
@@ -213,6 +216,7 @@ footer{
 /* TABLET */
 @media(max-width:900px){
   .work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .work-grid .project:last-child{grid-column:auto}
   .hero-bottom{align-items:flex-start;flex-direction:column;gap:22px}
 }
 
@@ -388,6 +392,14 @@ footer{
           <div class="project-info">
             <h3>FOOD</h3>
             <p>Лайфстайл · короткий монтаж</p>
+          </div>
+        </a>
+
+        <a class="project" href="https://drive.google.com/file/d/1paUGtR9cQ0Z6M3uIms-xc1JtEEMX8aBL/view?usp=sharing" target="_blank" rel="noopener">
+          <div class="thumb"><img src="thumbs/yamalmoto.jpg" alt="ЯМАЛМОТО"></div>
+          <div class="project-info">
+            <h3>ЯМАЛМОТО</h3>
+            <p>Динамичный монтаж · зимний экшен</p>
           </div>
         </a>
       </div>
