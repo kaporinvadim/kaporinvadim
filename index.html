@@ -111,15 +111,19 @@ section{
 
 .work-grid{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:repeat(6,minmax(0,1fr));
   gap:28px 18px;
 }
 .project{
   text-decoration:none;
   min-width:0;
+  grid-column:span 2;
+}
+.work-grid .project:nth-last-child(2){
+  grid-column:2 / span 2;
 }
 .work-grid .project:last-child{
-  grid-column:2;
+  grid-column:4 / span 2;
 }
 .thumb{
   width:100%;
@@ -216,6 +220,8 @@ footer{
 /* TABLET */
 @media(max-width:900px){
   .work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .project,
+  .work-grid .project:nth-last-child(2),
   .work-grid .project:last-child{grid-column:auto}
   .hero-bottom{align-items:flex-start;flex-direction:column;gap:22px}
 }
@@ -347,6 +353,14 @@ footer{
       </div>
 
       <div class="work-grid">
+        <a class="project" href="https://drive.google.com/file/d/1SlQvyICY4RGPyMLV-ivna8nTT_QfMLQ4/view?usp=sharing" target="_blank" rel="noopener">
+          <div class="thumb"><img src="thumbs/petrolero.jpg" alt="PETROLERO"></div>
+          <div class="project-info">
+            <h3>PETROLERO</h3>
+            <p>Авто-контент · трекинг · анимация текста</p>
+          </div>
+        </a>
+
         <a class="project" href="https://drive.google.com/file/d/15ssT-Fh4Mrq714Waiqy9H5E0WGPnHRPQ/view?usp=sharing" target="_blank" rel="noopener">
           <div class="thumb"><img src="thumbs/artist.jpg" alt="ARTIST"></div>
           <div class="project-info">
