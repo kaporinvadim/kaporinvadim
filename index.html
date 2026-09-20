@@ -118,6 +118,9 @@ section{
   text-decoration:none;
   min-width:0;
 }
+.work-grid .project:last-child{
+  grid-column:2;
+}
 .thumb{
   width:100%;
   aspect-ratio:9/16;
@@ -213,6 +216,7 @@ footer{
 /* TABLET */
 @media(max-width:900px){
   .work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .work-grid .project:last-child{grid-column:auto}
   .hero-bottom{align-items:flex-start;flex-direction:column;gap:22px}
 }
 
@@ -343,6 +347,14 @@ footer{
       </div>
 
       <div class="work-grid">
+        <a class="project" href="https://drive.google.com/file/d/1w_et2mX-7zczoPxjNLP_Gce7s2oghFwW/view?usp=sharing" target="_blank" rel="noopener">
+          <div class="thumb"><img src="thumbs/business-mistake.jpg" alt="БИЗНЕС ОШИБКА"></div>
+          <div class="project-info">
+            <h3>БИЗНЕС ОШИБКА</h3>
+            <p>Экспертный Reels · B-roll · визуальные акценты</p>
+          </div>
+        </a>
+
         <a class="project" href="https://drive.google.com/file/d/1PGkXCLndm8eM3gZwzU0XcxIoFfRdB8Qr/view?usp=sharing" target="_blank" rel="noopener">
           <div class="thumb"><img src="thumbs/firstaid.jpg" alt="FIRST AID"></div>
           <div class="project-info">
