@@ -9,6 +9,17 @@
 <title>Вадим Капорин — видеомонтажёр / Reels, Shorts</title>
 <link href="styles.css" rel="stylesheet"/>
 
+<style>
+/* Minimal link to the full Drive archive, below the five expanding posters. */
+.more-work{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:27px 28px 30px;background:var(--paper);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.more-work__left{display:flex;flex-direction:column;gap:9px;min-width:0}
+.more-work__eyebrow{font:11px/1.4 'Courier New',monospace;letter-spacing:.045em;font-weight:700}
+.more-work p{font-size:15px;line-height:1.45;margin:0;max-width:580px;color:#514e46}
+.more-work__link{display:flex;align-items:center;justify-content:space-between;gap:24px;min-width:290px;padding:16px 19px;background:var(--blue);color:#fff;font-size:15px;font-weight:750;transition:background .2s ease}
+.more-work__link:hover{background:#193ba7}.more-work__link span:last-child{font-size:23px;line-height:1}
+@media(max-width:650px){.more-work{padding:24px 18px 28px;flex-direction:column;align-items:stretch;gap:18px}.more-work p{font-size:14px}.more-work__link{min-width:0;width:100%;padding:15px 16px;font-size:14px}}
+@media(prefers-reduced-motion:reduce){.more-work__link{transition:none}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#selected-work">Перейти к работам</a>
@@ -30,31 +41,31 @@
 <p class="intro__specialty">REELS  /  SHORTS  /  VIDEO</p>
 <p class="intro__description">Монтирую короткие видео для соцсетей: разговорные, экспертные и рекламные. Работаю с B-roll, субтитрами, музыкой и звуком.</p>
 </div>
-<div class="intro__bottom"><span>Портфолио<br/><strong>18 работ</strong></span><a href="#all-work">Все проекты <span aria-hidden="true">↓</span></a></div>
+<div class="intro__bottom"><span>Портфолио<br/><strong>5 избранных</strong></span><a href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" rel="noopener noreferrer" target="_blank">Все видео <span aria-hidden="true">↗</span></a></div>
 </div>
 <div class="poster-area" id="selected-work">
 <div aria-label="Пять избранных видеоработ" class="poster-wall" id="posterWall">
-<a aria-label="Открыть видео: Микроволновка" class="poster" data-poster="0" data-work="0" href="https://drive.google.com/file/d/1B2iDVBz0YV7iEJiiA-Ti8UGwuYHPy0_s/view?usp=sharing" rel="noopener noreferrer" target="_blank">
+<a aria-label="Открыть видео: Микроволновка" class="poster" data-poster="0" data-work="0" data-description="Разговорный Reels · история" href="https://drive.google.com/file/d/1B2iDVBz0YV7iEJiiA-Ti8UGwuYHPy0_s/view?usp=sharing" rel="noopener noreferrer" target="_blank">
 <img alt="" decoding="async" loading="eager" src="images/microwave.webp"/>
 <span class="poster__serial">01<span class="poster__slash"> / 05</span></span>
 <span class="poster__content"><span class="poster__kicker">Избранная работа</span><strong class="poster__name">Микроволновка</strong><span class="poster__action">Смотреть видео <span aria-hidden="true">↗</span></span></span>
 </a>
-<a aria-label="Открыть видео: Делайте рекламу одежды" class="poster is-active" data-poster="1" data-work="17" href="https://drive.google.com/file/d/1maNDR_-2Y6nf_A2wPONRtQaHcsOfxdY1/view?usp=sharing" rel="noopener noreferrer" target="_blank">
+<a aria-label="Открыть видео: Делайте рекламу одежды" class="poster is-active" data-poster="1" data-work="17" data-description="Рекламный Reels · одежда" href="https://drive.google.com/file/d/1maNDR_-2Y6nf_A2wPONRtQaHcsOfxdY1/view?usp=sharing" rel="noopener noreferrer" target="_blank">
 <img alt="" decoding="async" fetchpriority="high" src="images/advertising-clothes.webp"/>
 <span class="poster__serial">02<span class="poster__slash"> / 05</span></span>
 <span class="poster__content"><span class="poster__kicker">Избранная работа</span><strong class="poster__name">Делайте рекламу одежды</strong><span class="poster__action">Смотреть видео <span aria-hidden="true">↗</span></span></span>
 </a>
-<a aria-label="Открыть видео: 6 серия" class="poster" data-poster="2" data-work="2" href="https://drive.google.com/file/d/1GrNmbvvgvIKDfHGLY_zmu0Q8CfwiQGnJ/view?usp=sharing" rel="noopener noreferrer" target="_blank">
+<a aria-label="Открыть видео: 6 серия" class="poster" data-poster="2" data-work="2" data-description="Серийный короткий формат" href="https://drive.google.com/file/d/1GrNmbvvgvIKDfHGLY_zmu0Q8CfwiQGnJ/view?usp=sharing" rel="noopener noreferrer" target="_blank">
 <img alt="" decoding="async" loading="eager" src="images/series6.webp"/>
 <span class="poster__serial">03<span class="poster__slash"> / 05</span></span>
 <span class="poster__content"><span class="poster__kicker">Избранная работа</span><strong class="poster__name">6 серия</strong><span class="poster__action">Смотреть видео <span aria-hidden="true">↗</span></span></span>
 </a>
-<a aria-label="Открыть видео: Саша Nordic 2.0" class="poster" data-poster="3" data-work="1" href="https://drive.google.com/file/d/1ojNvMNzCqxje_vCoaOPcC7ek5c9b-v9_/view?usp=sharing" rel="noopener noreferrer" target="_blank">
+<a aria-label="Открыть видео: Саша Nordic 2.0" class="poster" data-poster="3" data-work="1" data-description="Артист · Reels · B-roll" href="https://drive.google.com/file/d/1ojNvMNzCqxje_vCoaOPcC7ek5c9b-v9_/view?usp=sharing" rel="noopener noreferrer" target="_blank">
 <img alt="" decoding="async" loading="eager" src="images/nordic.webp"/>
 <span class="poster__serial">04<span class="poster__slash"> / 05</span></span>
 <span class="poster__content"><span class="poster__kicker">Избранная работа</span><strong class="poster__name">Саша Nordic 2.0</strong><span class="poster__action">Смотреть видео <span aria-hidden="true">↗</span></span></span>
 </a>
-<a aria-label="Открыть видео: 5 серия" class="poster" data-poster="4" data-work="3" href="https://drive.google.com/file/d/1nIJatAI0eC3k-BmsFZD4AGbcBTaLywDd/view?usp=sharing" rel="noopener noreferrer" target="_blank">
+<a aria-label="Открыть видео: 5 серия" class="poster" data-poster="4" data-work="3" data-description="Серийный короткий формат" href="https://drive.google.com/file/d/1nIJatAI0eC3k-BmsFZD4AGbcBTaLywDd/view?usp=sharing" rel="noopener noreferrer" target="_blank">
 <img alt="" decoding="async" loading="eager" src="images/series5.webp"/>
 <span class="poster__serial">05<span class="poster__slash"> / 05</span></span>
 <span class="poster__content"><span class="poster__kicker">Избранная работа</span><strong class="poster__name">5 серия</strong><span class="poster__action">Смотреть видео <span aria-hidden="true">↗</span></span></span>
@@ -66,60 +77,9 @@
 </div>
 </div>
 </section>
-<section aria-labelledby="work-title" class="work-section" id="all-work">
-<div class="section-heading"><div><span class="section-heading__number">01 / ПОРТФОЛИО</span><h2 id="work-title">Все работы<span class="accent-period">.</span></h2></div><p>Выбери проект, чтобы посмотреть видео.<br/>Все ролики открываются в Google Drive.</p></div>
-<div class="work-list"><a aria-label="Смотреть Делайте рекламу одежды" class="work-row" data-work="17" href="https://drive.google.com/file/d/1maNDR_-2Y6nf_A2wPONRtQaHcsOfxdY1/view?usp=sharing" rel="noopener noreferrer" target="_blank"><span class="work-row__number">01</span><span class="work-row__name">Делайте рекламу одежды</span><span class="work-row__type">Рекламный Reels · одежда</span><span aria-hidden="true" class="work-row__arrow">↗</span></a><a aria-label="Смотреть Микроволновка" class="work-row" data-work="0" href="https://drive.google.com/file/d/1B2iDVBz0YV7iEJiiA-Ti8UGwuYHPy0_s/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">02</span><span class="work-row__name">Микроволновка</span><span class="work-row__type">Разговорный Reels · история</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Саша Nordic 2.0" class="work-row" data-work="1" href="https://drive.google.com/file/d/1ojNvMNzCqxje_vCoaOPcC7ek5c9b-v9_/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">03</span><span class="work-row__name">Саша Nordic 2.0</span><span class="work-row__type">Артист / Reels / B-roll</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть 6 серия" class="work-row" data-work="2" href="https://drive.google.com/file/d/1GrNmbvvgvIKDfHGLY_zmu0Q8CfwiQGnJ/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">04</span><span class="work-row__name">6 серия</span><span class="work-row__type">Серийный короткий формат</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть 5 серия" class="work-row" data-work="3" href="https://drive.google.com/file/d/1nIJatAI0eC3k-BmsFZD4AGbcBTaLywDd/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">05</span><span class="work-row__name">5 серия</span><span class="work-row__type">Серийный короткий формат</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Девушки · Право" class="work-row" data-work="4" href="https://drive.google.com/file/d/1DGq3ACh6KnhFC6zEBQAcrBGQQxjQmqww/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">06</span><span class="work-row__name">Девушки · Право</span><span class="work-row__type">Экспертный Reels · право</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть KiraPrompts" class="work-row" data-work="5" href="https://drive.google.com/file/d/1XNxusK_kf2D7ZC3HjorWyeMS9JpGhE4V/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">07</span><span class="work-row__name">KiraPrompts</span><span class="work-row__type">AI-видео · монтаж Reels</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Заработок на нейросетях" class="work-row" data-work="6" href="https://drive.google.com/file/d/1UxXWAoyfNz0QfGiiwZlSnJ0isC_XRDDN/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">08</span><span class="work-row__name">Заработок на нейросетях</span><span class="work-row__type">Экспертное видео · AI</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Бизнес ошибка" class="work-row" data-work="7" href="https://drive.google.com/file/d/1w_et2mX-7zczoPxjNLP_Gce7s2oghFwW/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">09</span><span class="work-row__name">Бизнес ошибка</span><span class="work-row__type">Экспертный Reels · B-roll</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть First Aid" class="work-row" data-work="8" href="https://drive.google.com/file/d/1PGkXCLndm8eM3gZwzU0XcxIoFfRdB8Qr/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">10</span><span class="work-row__name">First Aid</span><span class="work-row__type">Экспертный Reels</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Petrolero" class="work-row" data-work="9" href="https://drive.google.com/file/d/1SlQvyICY4RGPyMLV-ivna8nTT_QfMLQ4/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">11</span><span class="work-row__name">Petrolero</span><span class="work-row__type">Автомобильное видео · анимация</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Artist" class="work-row" data-work="10" href="https://drive.google.com/file/d/15ssT-Fh4Mrq714Waiqy9H5E0WGPnHRPQ/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">12</span><span class="work-row__name">Artist</span><span class="work-row__type">Разговорный Reels</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Полностью поменяй жизнь" class="work-row" data-work="11" href="https://drive.google.com/file/d/18WcRjx7i4mVRNI-795WADM6xROE-cGeX/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">13</span><span class="work-row__name">Полностью поменяй жизнь</span><span class="work-row__type">Разговорное видео</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Квартира" class="work-row" data-work="12" href="https://drive.google.com/file/d/15IR0-SgFdlHUSdKWmZXhWXZ3_NXgBG4t/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">14</span><span class="work-row__name">Квартира</span><span class="work-row__type">Динамичный монтаж</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Продвижение в соцсетях" class="work-row" data-work="13" href="https://drive.google.com/file/d/1Q_RT-Lnbx1cKti7JA3koKhp4cTAjS8HT/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">15</span><span class="work-row__name">Продвижение в соцсетях</span><span class="work-row__type">Экспертный Reels</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Claude" class="work-row" data-work="14" href="https://drive.google.com/file/d/1Tk_WYD3aZsiYjFCfjOhLySS2mKLJ1_xe/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">16</span><span class="work-row__name">Claude</span><span class="work-row__type">Технологии · экранные вставки</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Food" class="work-row" data-work="15" href="https://drive.google.com/file/d/1zBiXUWP8P14IML0VvLMtUq6CZ1O7cR0d/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">17</span><span class="work-row__name">Food</span><span class="work-row__type">Лайфстайл</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a>
-<a aria-label="Смотреть Ямалмото" class="work-row" data-work="16" href="https://drive.google.com/file/d/1paUGtR9cQ0Z6M3uIms-xc1JtEEMX8aBL/view?usp=sharing" rel="noopener noreferrer" target="_blank">
-<span class="work-row__number">18</span><span class="work-row__name">Ямалмото</span><span class="work-row__type">Динамичный монтаж · экшен</span><span aria-hidden="true" class="work-row__arrow">↗</span>
-</a></div>
-<div class="work-after"><span>18 проектов</span><a href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" rel="noopener noreferrer" target="_blank">Больше видео в Google Drive ↗</a></div>
+<section aria-label="Другие видеоработы" class="more-work" id="more-work">
+<div class="more-work__left"><span class="more-work__eyebrow">01 / БОЛЬШЕ РАБОТ</span><p>Это пять избранных видео. Остальные работы собраны в Google Drive.</p></div>
+<a class="more-work__link" href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener noreferrer"><span>Все видео в Google Drive</span><span aria-hidden="true">↗</span></a>
 </section>
 <section aria-labelledby="about-title" class="about" id="about">
 <div class="about__heading"><span class="section-heading__number">02 / ОБО МНЕ</span><h2 id="about-title">Монтаж —<br/>моя работа<span class="accent-period">.</span></h2></div>
@@ -147,12 +107,9 @@
 <noscript><p class="noscript">JavaScript выключен: все карточки и проекты по-прежнему открывают видео в Google Drive.</p></noscript>
 <script>
 "use strict";
-// One source of truth: every clickable project's name, title and Drive URL live in index.html.
-// Unlike the earlier version, no parallel JavaScript array can point to another video.
+// Each poster stores its own title, description and Drive URL. No separate project array.
 const posterWall = document.getElementById('posterWall');
 const posters = [...posterWall.querySelectorAll('a.poster')];
-const rows = [...document.querySelectorAll('a.work-row')];
-const rowsById = new Map(rows.map(el => [el.dataset.work, el]));
 const selectedName = document.getElementById('selectedName');
 const watchSelected = document.getElementById('watchSelected');
 const lightbox = document.getElementById('lightbox');
@@ -167,12 +124,11 @@ let lastFocus = null;
 
 function projectData(element) {
   // The clicked element's OWN href is authoritative: never pull a link from a different slot.
-  const row = rowsById.get(element.dataset.work);
-  const title = element.querySelector('.poster__name, .work-row__name')?.textContent.trim()
-     || row?.querySelector('.work-row__name')?.textContent.trim() || 'Видео';
-  const description = element.querySelector('.work-row__type')?.textContent.trim()
-     || row?.querySelector('.work-row__type')?.textContent.trim() || '';
-  return {title, description, url: element.href};
+  return {
+    title: element.querySelector('.poster__name')?.textContent.trim() || 'Видео',
+    description: element.dataset.description || '',
+    url: element.href
+  };
 }
 function selectPoster(i) {
   if(i < 0 || i >= posters.length) return;
@@ -204,13 +160,6 @@ posters.forEach((poster,i) => {
   });
 });
 watchSelected.addEventListener('click', () => openVideo(posters[selectedPoster]));
-rows.forEach(row=>{
-  row.addEventListener('click',e=>{
-    if(e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    e.preventDefault();
-    openVideo(row);
-  });
-});
 function openVideo(element) {
   const work = projectData(element);
   if(!work.url) return;
