@@ -3,524 +3,172 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Вадим — видеомонтаж</title>
-<meta name="description" content="Портфолио видеомонтажёра: Reels, Shorts и вертикальные видео.">
+<meta name="theme-color" content="#ece9df">
+<meta name="description" content="Вадим Капорин — видеомонтажёр Reels, Shorts и коротких видео. Коммерческие работы, опыт, навыки и контакты.">
+<meta property="og:title" content="Вадим Капорин — монтаж в движении">
+<meta property="og:description" content="Портфолио видеомонтажёра: Reels, Shorts, экспертные и креативные видео.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/microwave.webp">
+<title>Вадим Капорин — видеомонтаж / Cutting Room</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231a1916'/%3E%3Ctext x='32' y='45' font-size='44' fill='%23f2613b' text-anchor='middle' font-family='Arial' font-weight='900'%3EK%3C/text%3E%3C/svg%3E">
 <style>
-:root{
-  --bg:#f7f7f5;
-  --card:#ffffff;
-  --text:#111111;
-  --muted:#747474;
-  --line:#dfdfdb;
-  --max:1120px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;
-}
-a{color:inherit}
-.container{
-  width:min(var(--max),calc(100% - 40px));
-  margin:0 auto;
-}
-header{
-  height:72px;
-  border-bottom:1px solid var(--line);
-}
-.header-inner{
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.logo{
-  text-decoration:none;
-  font-size:15px;
-  font-weight:700;
-}
-nav{
-  display:flex;
-  gap:24px;
-}
-nav a{
-  color:var(--muted);
-  text-decoration:none;
-  font-size:14px;
-}
-nav a:hover{color:var(--text)}
-
-.hero{
-  padding:88px 0 76px;
-  border-bottom:1px solid var(--line);
-}
-.hero h1{
-  margin:0;
-  font-size:clamp(48px,7vw,88px);
-  line-height:.98;
-  letter-spacing:-.055em;
-  font-weight:700;
-  max-width:820px;
-}
-.hero-bottom{
-  margin-top:34px;
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:40px;
-}
-.hero p{
-  margin:0;
-  max-width:560px;
-  font-size:18px;
-  line-height:1.5;
-  color:var(--muted);
-}
-.hero-link{
-  flex:0 0 auto;
-  text-decoration:none;
-  font-size:14px;
-  border-bottom:1px solid var(--text);
-  padding-bottom:3px;
-}
-
-section{
-  padding:72px 0;
-  border-bottom:1px solid var(--line);
-}
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-  gap:24px;
-  margin-bottom:28px;
-}
-.section-head h2{
-  margin:0;
-  font-size:32px;
-  letter-spacing:-.035em;
-}
-.section-head span{
-  color:var(--muted);
-  font-size:13px;
-}
-
-.work-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:28px 18px;
-}
-.project{
-  text-decoration:none;
-  min-width:0;
-}
-.thumb{
-  width:100%;
-  aspect-ratio:9/16;
-  overflow:hidden;
-  border:1px solid var(--line);
-  background:#ececea;
-}
-.thumb img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform .2s ease;
-}
-.project:hover img{transform:scale(1.012)}
-.project-info{
-  padding-top:10px;
-}
-.project-info h3{
-  margin:0;
-  font-size:16px;
-  line-height:1.25;
-}
-.project-info p{
-  margin:5px 0 0;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.4;
-}
-
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-.info-card{
-  background:var(--card);
-  border:1px solid var(--line);
-  padding:28px;
-  min-height:220px;
-}
-.info-card h3{
-  margin:0 0 18px;
-  font-size:18px;
-}
-.info-card p{
-  margin:0;
-  color:var(--muted);
-  font-size:15px;
-  line-height:1.6;
-}
-.tags{
-  margin-top:24px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-.tag{
-  padding:7px 10px;
-  border:1px solid var(--line);
-  background:var(--bg);
-  font-size:12px;
-}
-
-.more{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:30px;
-}
-.more h2{
-  margin:0;
-  font-size:36px;
-  letter-spacing:-.04em;
-}
-.more a{
-  text-decoration:none;
-  border-bottom:1px solid var(--text);
-  padding-bottom:3px;
-  font-size:14px;
-  white-space:nowrap;
-}
-
-footer{
-  height:96px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  color:var(--muted);
-  font-size:12px;
-}
-
-/* TABLET */
-@media(max-width:900px){
-  .work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hero-bottom{align-items:flex-start;flex-direction:column;gap:22px}
-}
-
-/* MOBILE */
-@media(max-width:640px){
-  .container{
-    width:min(100% - 24px,var(--max));
-  }
-
-  header{height:60px}
-  nav{gap:14px}
-  nav a:nth-child(2){display:none}
-
-  .hero{
-    padding:48px 0 44px;
-  }
-  .hero h1{
-    font-size:48px;
-    line-height:1;
-    letter-spacing:-.05em;
-    max-width:100%;
-  }
-  .hero p{
-    font-size:16px;
-    line-height:1.5;
-  }
-  .hero-bottom{
-    margin-top:24px;
-  }
-
-  section{
-    padding:48px 0;
-  }
-  .section-head{
-    margin-bottom:22px;
-  }
-  .section-head h2{
-    font-size:28px;
-  }
-  .section-head span{
-    display:none;
-  }
-
-  .work-grid{
-    display:flex;
-    flex-direction:column;
-    gap:0;
-  }
-  .project{
-    display:grid;
-    grid-template-columns:112px 1fr;
-    gap:16px;
-    padding:14px 0;
-    border-top:1px solid var(--line);
-  }
-  .project:last-child{
-    border-bottom:1px solid var(--line);
-  }
-  .thumb{
-    width:112px;
-    aspect-ratio:9/16;
-  }
-  .project-info{
-    padding:4px 0 0;
-    align-self:start;
-  }
-  .project-info h3{
-    font-size:16px;
-    line-height:1.25;
-  }
-  .project-info p{
-    font-size:13px;
-    line-height:1.45;
-    margin-top:7px;
-  }
-
-  .about-grid{
-    grid-template-columns:1fr;
-  }
-  .info-card{
-    min-height:0;
-    padding:22px;
-  }
-
-  .more{
-    align-items:flex-start;
-    flex-direction:column;
-    gap:20px;
-  }
-  .more h2{
-    font-size:30px;
-  }
-
-  footer{
-    height:84px;
-  }
-}
+:root {--paper:#ece9df; --ink:#1a1916; --soft:#f8f5ed; --verm:#f1603c;--muted:#625f58;--stroke:#aaa69b;--hair:#c7c3b8;--night:#211f1c;--max:1500px}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{margin:0;color:var(--ink);background:var(--paper);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+body::selection{background:var(--verm);color:var(--ink)}
+a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-width:100%}
+button:focus-visible,a:focus-visible{outline:3px solid var(--verm);outline-offset:4px}
+.wrap{width:min(var(--max),calc(100% - 88px));margin-inline:auto}
+.eyebrow,.mono,.section-counter{font-family:"Courier New",monospace;letter-spacing:.035em}
+.site-header{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--ink)}
+.header-grid{height:78px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:30px}
+.brand{font-weight:900;font-size:24px;letter-spacing:-.085em;white-space:nowrap}.brand em{font-style:normal;color:var(--verm)}.brand small{font:10px/1.15 "Courier New",monospace;letter-spacing:-.015em;display:block;margin-top:-1px}
+.main-nav{display:flex;align-items:center;gap:36px}.main-nav a{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.035em;transition:color .15s}.main-nav a:hover{color:#db4525}
+.contact-chip{justify-self:end;background:var(--ink);color:var(--soft);padding:15px 18px;display:flex;gap:24px;align-items:center;font:800 12px Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;transition:background .15s,color .15s}.contact-chip:hover{background:var(--verm);color:var(--ink)}
+.masthead{display:flex;justify-content:space-between;gap:20px;padding:19px 0 0;font:700 11px/1.4 "Courier New",monospace;text-transform:uppercase;letter-spacing:.055em}
+.status{display:inline-flex;align-items:center;gap:8px}.dot{width:7px;height:7px;border-radius:50%;background:var(--verm);display:inline-block}
+.hero{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(22px,3.4vw,58px);padding:20px 0 50px;align-items:stretch}
+.hero-copy{min-width:0;display:flex;flex-direction:column;min-height:602px;justify-content:space-between}
+.hero-kicker{font:800 12px/1.35 "Courier New",monospace;margin:0 0 24px;padding-top:9px;letter-spacing:.07em}
+.hero h1{font-size:clamp(85px,9.35vw,164px);line-height:.78;letter-spacing:-.115em;font-weight:900;margin:22px 0 25px;text-transform:uppercase}
+.hero h1 .period{color:var(--verm)}
+.hero h1 em{display:block;font:italic 400 clamp(59px,8.05vw,133px)/1.07 Georgia,'Times New Roman',serif;letter-spacing:-.105em;text-transform:none;white-space:nowrap;margin:16px 0 0 6px}
+.hero-bottom{display:grid;grid-template-columns:auto 1fr;column-gap:22px;align-items:center;border-top:1px solid var(--ink);padding-top:23px;margin-top:auto}.asterisk{font:130px/.7 Georgia,serif;color:var(--verm);height:88px}.hero-bottom p{font-size:clamp(17px,1.62vw,24px);line-height:1.28;letter-spacing:-.035em;max-width:480px;margin:0}
+.hero-cta{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-top:25px}.underlink{border-bottom:2px solid currentColor;padding-bottom:5px;text-transform:uppercase;font:800 12px Arial;letter-spacing:.055em;white-space:nowrap}.underlink:hover{color:#c64022}.hero-serial{font:11px/1.5 "Courier New",monospace;text-align:right;color:var(--muted)}
+.hero-poster{position:relative;display:block;min-height:602px;background:var(--night);border:9px solid var(--night)}.hero-poster>img{position:absolute;width:100%;height:100%;object-fit:cover;object-position:center 34%;filter:contrast(1.03)}
+.hero-poster::after{content:"";pointer-events:none;position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.26),transparent 42%)}
+.poster-stamp{position:absolute;z-index:2;right:-28px;top:28px;width:105px;height:105px;background:var(--verm);border-radius:100%;display:flex;align-items:center;justify-content:center;text-align:center;transform:rotate(13deg);font-weight:900;font-size:17px;line-height:.98;letter-spacing:-.05em}
+.poster-stamp small{display:block;font:700 10px/1.5 "Courier New",monospace;margin-top:7px;letter-spacing:0}
+.poster-label{z-index:2;position:absolute;left:-34px;bottom:25px;min-width:min(350px,88%);display:flex;justify-content:space-between;align-items:center;gap:35px;background:var(--soft);border:1px solid var(--ink);padding:19px 20px;box-shadow:6px 6px 0 var(--ink)}
+.poster-label strong{font-size:17px;letter-spacing:-.03em}.poster-label span{font:10px "Courier New",monospace;white-space:nowrap}
+.poster-vertical{position:absolute;z-index:2;top:25px;left:18px;font:11px 'Courier New',monospace;writing-mode:vertical-rl;color:var(--soft);letter-spacing:.15em}
+.marquee{background:var(--ink);color:var(--paper);overflow:hidden;border-block:1px solid var(--ink)}.marquee-row{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:0}.marquee-row span{font:700 11px/1.3 "Courier New",monospace;letter-spacing:.11em;text-align:center;flex:1;white-space:nowrap;padding:17px 7px;border-right:1px solid #6e6b62}.marquee-row span:last-child{border:0}.marquee-row i{color:var(--verm);font-style:normal;font-size:14px}
+.section-intro{display:flex;align-items:baseline;justify-content:space-between;gap:30px;border-bottom:1px solid var(--ink);padding:87px 0 22px;margin-bottom:22px}.section-intro h2{font-size:clamp(40px,5.3vw,78px);line-height:.95;letter-spacing:-.085em;margin:0;text-transform:uppercase}.section-intro em{font:italic 400 .85em Georgia,serif;letter-spacing:-.075em;text-transform:none}.section-counter{color:var(--muted);font-size:12px;white-space:nowrap}
+.features{display:grid;grid-template-columns:1.28fr 1fr 1fr;column-gap:18px;row-gap:31px;align-items:start}
+.feature-large{grid-row:span 2}.work-card{display:block;min-width:0}.work-frame{background:#cbc8c0;position:relative;overflow:hidden;aspect-ratio:1/1.14}.feature-large .work-frame{aspect-ratio: .612;}.work-frame img{height:100%;width:100%;object-fit:cover;object-position:center 32%;filter:saturate(.96);transition:transform .35s cubic-bezier(.2,.7,.2,1),filter .3s}.work-card:hover img{transform:scale(1.035);filter:saturate(1.03)}
+.work-open{position:absolute;right:0;bottom:0;width:45px;height:45px;background:var(--verm);display:grid;place-items:center;font-size:24px;transition:background .2s,color .2s}.work-card:hover .work-open{background:var(--ink);color:var(--soft)}
+.frame-index{position:absolute;left:10px;top:10px;padding:6px 8px;font:700 10px 'Courier New',monospace;color:var(--soft);background:rgba(26,25,22,.8)}
+.work-meta{border-top:1px solid var(--ink);margin-top:12px;padding-top:12px;display:flex;justify-content:space-between;align-items:start;gap:12px}.work-name{font-weight:800;font-size:16px;letter-spacing:-.045em}.work-type{max-width:45%;text-align:right;color:var(--muted);font:11px/1.4 "Courier New",monospace}
+.archive-top{margin-top:89px;padding:30px 0 22px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;gap:20px;align-items:center}
+.archive-top h3{margin:0;font-size:clamp(28px,3.2vw,45px);letter-spacing:-.07em;line-height:1;text-transform:uppercase}.archive-top h3 em{font:italic normal 1em Georgia,serif;letter-spacing:-.07em;text-transform:none}
+.archive-filter{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.archive-filter button{padding:9px 13px;border:1px solid var(--ink);background:transparent;cursor:pointer;font:700 11px Arial;transition:all .18s}.archive-filter button:hover{background:var(--soft)}.archive-filter button[aria-pressed="true"]{background:var(--ink);color:var(--soft)}
+.archive-count{font:11px "Courier New",monospace;color:var(--muted);margin:0 0 18px}
+.archive-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 16px}.archive-item[hidden]{display:none!important}.archive-card .work-frame{aspect-ratio:1 / 1.16}.archive-card .work-open{width:36px;height:36px;font-size:19px}.archive-card .work-meta{display:block;padding-top:9px;margin-top:9px}.archive-card .work-name{display:block;font-size:14px}.archive-card .work-type{display:block;max-width:none;text-align:left;font-size:10px;padding-top:5px}
+.archive-more{display:flex;justify-content:space-between;align-items:center;border-block:1px solid var(--ink);margin-top:45px;padding:19px 0;gap:22px}.archive-more p{font:12px/1.6 'Courier New',monospace;margin:0}.archive-more .underlink{margin-right:6px}
+.about{margin-top:110px;background:var(--night);color:var(--soft);padding:75px 0 85px}.about-kicker{font:700 11px 'Courier New',monospace;letter-spacing:.12em;color:var(--verm)}.about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:7vw;margin-top:25px}.about-headline{font-size:clamp(54px,6.8vw,105px);line-height:.93;letter-spacing:-.095em;margin:0;font-weight:900}.about-headline em{font:italic normal .94em Georgia,serif;letter-spacing:-.09em}.about-headline b{color:var(--verm)}
+.about-side{padding-top:4px}.about-side>p{font-size:clamp(18px,1.65vw,23px);line-height:1.43;letter-spacing:-.025em;margin:0 0 24px;max-width:700px}.about-side>p.subtle{font-size:15px;line-height:1.65;letter-spacing:0;color:#d3cfc6}
+.about-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;border-top:1px solid #716d62;margin-top:33px;padding-top:24px}.about-stat strong{font-size:24px;letter-spacing:-.045em;display:block}.about-stat span{font:11px/1.5 'Courier New',monospace;color:#c3bfb5;display:block;margin-top:9px}
+.capability{display:grid;grid-template-columns:1fr 1fr;gap:55px;border-top:1px solid #777369;margin-top:60px;padding-top:25px}.capability h3{font:700 11px 'Courier New',monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--verm);margin:0 0 20px}.tag-list{display:flex;gap:8px;flex-wrap:wrap}.tag-list span{border:1px solid #777369;padding:9px 11px;font:12px Arial}.capability p{margin:0;color:#ddd8ce;font-size:15px;line-height:1.75}
+.contact-section{padding:97px 0 90px}.contact-kicker{font:700 12px 'Courier New',monospace;letter-spacing:.12em}.contact-grid{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end}.contact-h{font-size:clamp(65px,9vw,145px);line-height:.84;letter-spacing:-.102em;text-transform:uppercase;font-weight:900;margin:25px 0 0}.contact-h em{font:italic normal .88em Georgia,serif;letter-spacing:-.1em;text-transform:none}.contact-h b{color:var(--verm)}
+.contact-details{min-width:350px;max-width:420px}.contact-details>p{font-size:16px;line-height:1.55;letter-spacing:-.015em;margin:0 0 25px}.contact-route{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--ink);padding:17px 0;font-size:15px;font-weight:750}.contact-route:last-child{border-bottom:1px solid var(--ink)}.contact-route:hover{color:#ce4024}.contact-route small{color:var(--muted);font:10px 'Courier New',monospace;white-space:nowrap}.contact-small{margin-top:34px;display:flex;gap:10px;align-items:center;font:12px 'Courier New',monospace;color:var(--muted)}
+.footer{background:var(--ink);color:var(--soft)}.footer-inner{min-height:91px;display:flex;align-items:center;justify-content:space-between;gap:20px;font:11px 'Courier New',monospace}.footer-inner a:hover{color:var(--verm)}
+@media(max-width:1180px){.wrap{width:min(var(--max),calc(100% - 52px))}.hero h1{font-size:9vw}.hero h1 em{font-size:7.6vw}.hero-copy,.hero-poster{min-height:520px}.hero-bottom p{font-size:18px}.asterisk{font-size:100px;height:76px}.about-grid{gap:40px}.features{grid-template-columns:1fr 1fr}.feature-large{grid-row:auto;grid-column:span 2}.feature-large .work-frame{aspect-ratio:2.1/1}.feature-large .work-frame img{object-position:center 40%}.archive-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.contact-details{min-width:290px}}
+@media(max-width:760px){.wrap{width:calc(100% - 32px)}.header-grid{height:66px;display:flex;justify-content:space-between;gap:15px}.brand{font-size:19px}.brand small{font-size:8px}.main-nav{display:none}.contact-chip{font-size:10px;padding:11px 12px;gap:11px}.masthead{font-size:9px;padding-top:16px}.masthead>span:last-child{display:none}.hero{display:flex;flex-direction:column;gap:28px;padding:18px 0 49px}.hero-copy{min-height:auto}.hero-kicker{font-size:10px;margin:0 0 12px}.hero h1{font-size:clamp(64px,17.4vw,118px);margin:10px 0 28px}.hero h1 em{font-size:clamp(51px,14.4vw,102px);margin-top:8px}.hero-bottom{margin-top:8px;padding-top:18px;grid-template-columns:65px 1fr;gap:10px}.asterisk{font-size:99px;height:59px}.hero-bottom p{font-size:17px}.hero-cta{margin-top:23px}.hero-serial{font-size:9px}.hero-poster{height:540px;min-height:0;margin-right:12px}.poster-stamp{height:83px;width:83px;right:-22px;font-size:14px}.poster-label{left:-7px;bottom:17px;padding:14px;min-width:min(310px,86%)}.poster-label strong{font-size:14px}.poster-label span{font-size:9px}.marquee-row span{flex:none;width:50%;font-size:10px}.marquee-row span:nth-child(n+3){display:none}.section-intro{padding:64px 0 19px;align-items:end;gap:12px}.section-intro h2{font-size:clamp(36px,8.4vw,56px)}.section-counter{font-size:10px;white-space:normal;max-width:122px;text-align:right;line-height:1.35}.features{gap:20px 12px}.feature-large .work-frame{aspect-ratio:1.2/1}.work-frame{aspect-ratio: .78}.work-name{font-size:13px}.work-type{display:block;max-width:none;text-align:left;padding-top:7px;font-size:10px}.work-meta{display:block;margin-top:9px;padding-top:9px}.frame-index{font-size:9px;padding:5px}.work-open{width:35px;height:35px;font-size:19px}.archive-top{margin-top:60px;display:block}.archive-top h3{font-size:35px}.archive-filter{justify-content:flex-start;margin-top:20px}.archive-filter button{font-size:11px}.archive-grid{grid-template-columns:1fr 1fr;gap:20px 12px}.archive-card .work-frame{aspect-ratio:.77}.archive-more{display:block}.archive-more .underlink{display:inline-block;margin-top:15px}.about{margin-top:65px;padding:65px 0 70px}.about-grid{display:block}.about-headline{font-size:clamp(58px,12vw,90px)}.about-side{margin-top:30px}.about-side>p{font-size:18px}.about-side>p.subtle{font-size:14px}.about-stats{gap:9px}.about-stat strong{font-size:18px}.about-stat span{font-size:10px}.capability{grid-template-columns:1fr;gap:27px;margin-top:43px}.contact-section{padding:69px 0}.contact-grid{display:block}.contact-h{font-size:clamp(58px,12vw,95px);margin:17px 0 35px}.contact-details{min-width:0;max-width:none}.contact-route{font-size:14px}.footer-inner{min-height:100px;flex-wrap:wrap;padding:23px 0;align-content:center;gap:12px}}
+@media(max-width:380px){.hero h1{font-size:15.9vw}.hero h1 em{font-size:13.2vw}.brand{font-size:17px}.hero-poster{height:460px}.poster-label{min-width:240px}.poster-label span{font-size:8px}.archive-filter button{padding:8px 10px}.contact-h{font-size:14vw}.section-intro h2{font-size:29px}.section-counter{font-size:9px;max-width:100px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="container header-inner">
-    <a class="logo" href="#top">Вадим — видеомонтаж</a>
-    <nav>
-      <a href="#work">Работы</a>
-      <a href="#about">Обо мне</a>
-      <a href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener">Все видео ↗</a>
-    </nav>
-  </div>
-</header>
-
+<header class="site-header"><div class="wrap header-grid"><a class="brand" href="#top" aria-label="В начало">KAPORIN<em>✳</em>EDIT<small>INDEPENDENT VIDEO EDITOR</small></a><nav class="main-nav" aria-label="Основная навигация"><a href="#works">01 / Работы</a><a href="#about">02 / Обо мне</a><a href="#contact">03 / Связаться</a></nav><a class="contact-chip" href="https://t.me/razgameme" target="_blank" rel="noopener noreferrer">НАПИСАТЬ <span aria-hidden="true">↗</span></a></div></header>
 <main id="top">
-  <div class="container">
-    <section class="hero">
-      <h1>Монтаж для Reels и Shorts.</h1>
-      <div class="hero-bottom">
-        <p>Монтирую короткие вертикальные видео в Premiere Pro. Работаю со структурой исходника, субтитрами, B-roll, музыкой и звуком.</p>
-        <a class="hero-link" href="#work">Смотреть работы ↓</a>
-      </div>
-    </section>
-
-    <section id="work">
-      <div class="section-head">
-        <h2>Работы</h2>
-        <span>Избранные проекты</span>
-      </div>
-
-      <div class="work-grid">
-        <a class="project" href="https://drive.google.com/file/d/1GrNmbvvgvIKDfHGLY_zmu0Q8CfwiQGnJ/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/6-seriya.jpg" alt="6 серия"></div>
-          <div class="project-info">
-            <h3>6 СЕРИЯ</h3>
-            <p>Reels · B-roll · динамичный монтаж</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1nIJatAI0eC3k-BmsFZD4AGbcBTaLywDd/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/5-seriya.jpg" alt="5 серия"></div>
-          <div class="project-info">
-            <h3>5 СЕРИЯ</h3>
-            <p>Reels · B-roll · динамичный монтаж</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1ojNvMNzCqxje_vCoaOPcC7ek5c9b-v9_/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/sasha-nordic-2.jpg" alt="Саша Nordic 2.0"></div>
-          <div class="project-info">
-            <h3>САША NORDIC 2.0</h3>
-            <p>Reels · B-roll · визуальные акценты</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1XNxusK_kf2D7ZC3HjorWyeMS9JpGhE4V/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/kiraprompts.jpg" alt="KiraPrompts"></div>
-          <div class="project-info">
-            <h3>KiraPrompts</h3>
-            <p>AI-видео · генеративный контент · монтаж Reels</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1DGq3ACh6KnhFC6zEBQAcrBGQQxjQmqww/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/devushki-pravo.jpg" alt="Девушки, право, команда из профессионалов"></div>
-          <div class="project-info">
-            <h3>ДЕВУШКИ · ПРАВО</h3>
-            <p>Экспертный Reels · юридическая тематика · B-roll</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1Cv6kQ9fvYhRzYJ8UGcmgQUnkGheuy1Jx/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/strategy-broll.jpg" alt="STRATEGY B-ROLL"></div>
-          <div class="project-info">
-            <h3>STRATEGY B-ROLL</h3>
-            <p>Экспертный Reels · медицинский B-roll · визуальные акценты</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1UxXWAoyfNz0QfGiiwZlSnJ0isC_XRDDN/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/earn-ai.jpg" alt="ЗАРАБОТОК НА НЕЙРОСЕТЯХ"></div>
-          <div class="project-info">
-            <h3>ЗАРАБОТОК НА НЕЙРОСЕТЯХ</h3>
-            <p>Экспертный · AI-тематика · визуальные акценты · Горизонтальное видео</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1w_et2mX-7zczoPxjNLP_Gce7s2oghFwW/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/business-mistake.jpg" alt="БИЗНЕС ОШИБКА"></div>
-          <div class="project-info">
-            <h3>БИЗНЕС ОШИБКА</h3>
-            <p>Экспертный Reels · B-roll · визуальные акценты</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1PGkXCLndm8eM3gZwzU0XcxIoFfRdB8Qr/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/firstaid.jpg" alt="FIRST AID"></div>
-          <div class="project-info">
-            <h3>FIRST AID</h3>
-            <p>Экспертный Reels · B-roll · акцентная типографика</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1SlQvyICY4RGPyMLV-ivna8nTT_QfMLQ4/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/petrolero.jpg" alt="PETROLERO"></div>
-          <div class="project-info">
-            <h3>PETROLERO</h3>
-            <p>Авто-контент · трекинг · анимация текста</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/15ssT-Fh4Mrq714Waiqy9H5E0WGPnHRPQ/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/artist.jpg" alt="ARTIST"></div>
-          <div class="project-info">
-            <h3>ARTIST</h3>
-            <p>Разговорный Reels · субтитры · структура</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/18WcRjx7i4mVRNI-795WADM6xROE-cGeX/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/life.jpg" alt="Полностью поменяй жизнь"></div>
-          <div class="project-info">
-            <h3>Полностью поменяй жизнь</h3>
-            <p>Разговорное видео · титры</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/15IR0-SgFdlHUSdKWmZXhWXZ3_NXgBG4t/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/apartment.jpg" alt="КВАРТИРА"></div>
-          <div class="project-info">
-            <h3>КВАРТИРА</h3>
-            <p>Динамичный монтаж · визуальные вставки</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1Q_RT-Lnbx1cKti7JA3koKhp4cTAjS8HT/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/social.jpg" alt="Продвижение в соцсетях"></div>
-          <div class="project-info">
-            <h3>Продвижение в соцсетях</h3>
-            <p>Экспертный Reels · субтитры</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1Tk_WYD3aZsiYjFCfjOhLySS2mKLJ1_xe/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/claude.jpg" alt="Claude"></div>
-          <div class="project-info">
-            <h3>Claude</h3>
-            <p>Тех-контент · экранные вставки</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1zBiXUWP8P14IML0VvLMtUq6CZ1O7cR0d/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/food.jpg" alt="FOOD"></div>
-          <div class="project-info">
-            <h3>FOOD</h3>
-            <p>Лайфстайл · короткий монтаж</p>
-          </div>
-        </a>
-
-        <a class="project" href="https://drive.google.com/file/d/1paUGtR9cQ0Z6M3uIms-xc1JtEEMX8aBL/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="thumb"><img src="thumbs/yamalmoto.jpg" alt="ЯМАЛМОТО"></div>
-          <div class="project-info">
-            <h3>ЯМАЛМОТО</h3>
-            <p>Динамичный монтаж · зимний экшен</p>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="section-head">
-        <h2>Обо мне</h2>
-        <span>Коротко</span>
-      </div>
-
-      <div class="about-grid">
-        <div class="info-card">
-          <h3>Что делаю</h3>
-          <p>Собираю короткие вертикальные видео из готового материала: убираю лишнее, при необходимости переставляю фрагменты, оформляю субтитры, добавляю B-roll и визуальные вставки. Также работаю с AI-видео и генеративным контентом.</p>
-          <div class="tags">
-            <span class="tag">Premiere Pro</span>
-            <span class="tag">Reels</span>
-            <span class="tag">Shorts</span>
-            <span class="tag">Субтитры</span>
-            <span class="tag">B-roll</span>
-            <span class="tag">Музыка / SFX</span>
-            <span class="tag">AI-видео</span>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <h3>Опыт</h3>
-          <p>Есть коммерческий опыт: выполнял оплачиваемые заказы для клиентов и работал в формате долгосрочного сотрудничества. Получал материалы и ТЗ, собирал ролики под задачу, вносил правки по обратной связи и сдавал готовые видео. Монтаж уже приносил мне доход — это не только учебные работы и портфолио, а реальная работа с клиентами. Есть опыт проектов с AI-сгенерированным видео и другим генеративным контентом.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="more">
-        <h2>Больше работ — в Google Drive.</h2>
-        <a href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener">Открыть все видео ↗</a>
-      </div>
-    </section>
-
-    <footer>
-      <span>© 2026 Вадим</span>
-      <a href="#top">Наверх ↑</a>
-    </footer>
-  </div>
+<div class="wrap">
+ <div class="masthead"><span>ВАДИМ КАПОРИН / ВИДЕОМОНТАЖЁР / САНКТ-ПЕТЕРБУРГ</span><span class="status"><span class="dot" aria-hidden="true"></span> ОТКРЫТ К ПРОЕКТАМ · 2026</span></div>
+ <section class="hero" aria-label="Главная"><div class="hero-copy"><div><p class="hero-kicker">REELS / SHORTS / SOCIAL VIDEO &nbsp;—&nbsp; 01</p><h1>МОНТАЖ<span class="period">.</span><em>в движении</em></h1></div><div><div class="hero-bottom"><span class="asterisk" aria-hidden="true">*</span><p>Короткие видео для соцсетей — от первых кадров до финального экспорта. Ритм, субтитры, B-roll, звук.</p></div><div class="hero-cta"><a href="#works" class="underlink">Смотреть проекты ↓</a><span class="hero-serial">VADIM KAPORIN<br>EDITOR / ST. PETERSBURG</span></div></div></div>
+ <a class="hero-poster" href="https://drive.google.com/file/d/1B2iDVBz0YV7iEJiiA-Ti8UGwuYHPy0_s/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Открыть видео Микроволновка в Google Drive"><img src="assets/microwave.webp" alt="Кадр из ролика Микроволновка" fetchpriority="high"><span class="poster-vertical" aria-hidden="true">FEATURED VIDEO / 001</span><span class="poster-stamp">NEW<br>WORK<small>2026 ↗</small></span><span class="poster-label"><strong>МИКРОВОЛНОВКА</strong><span>STORY / REELS ↗</span></span></a></section>
+</div>
+<div class="marquee" aria-label="Монтаж, субтитры, звук, цвет"><div class="marquee-row"><span>◉ <i>REC</i> / FRAME BY FRAME</span><span>CUT — COLOR — SOUND</span><span>REELS / SHORTS / EDITING</span><span>ПОРТФОЛИО — 2026 <i>✳</i></span></div></div>
+<div class="wrap">
+ <section id="works" aria-labelledby="work-title"><div class="section-intro"><h2 id="work-title">ИЗБРАННЫЕ<br><em>работы</em> <span style="color:var(--verm)">↘</span></h2><span class="section-counter">01 / 18 ПРОЕКТОВ<br>06 ИЗБРАННЫХ + 11 В АРХИВЕ</span></div>
+ <div class="features"><a class="work-card feature-card" href="https://drive.google.com/file/d/1GrNmbvvgvIKDfHGLY_zmu0Q8CfwiQGnJ/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: 6 серия (Google Drive)">
+    <div class="work-frame"><img src="assets/series6.webp" alt="Кадр из видео «6 серия»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 02</span></div>
+    <div class="work-meta"><span class="work-name">6 серия</span><span class="work-type">Серийный контент / Reels</span></div>
+  </a>
+<a class="work-card feature-card" href="https://drive.google.com/file/d/1nIJatAI0eC3k-BmsFZD4AGbcBTaLywDd/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: 5 серия (Google Drive)">
+    <div class="work-frame"><img src="assets/series5.webp" alt="Кадр из видео «5 серия»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 03</span></div>
+    <div class="work-meta"><span class="work-name">5 серия</span><span class="work-type">Серийный контент / Reels</span></div>
+  </a>
+<a class="work-card feature-card" href="https://drive.google.com/file/d/1ojNvMNzCqxje_vCoaOPcC7ek5c9b-v9_/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Саша Nordic 2.0 (Google Drive)">
+    <div class="work-frame"><img src="assets/nordic.webp" alt="Кадр из видео «Саша Nordic 2.0»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 04</span></div>
+    <div class="work-meta"><span class="work-name">Саша Nordic 2.0</span><span class="work-type">Артист / B-roll / Reels</span></div>
+  </a>
+<a class="work-card feature-card" href="https://drive.google.com/file/d/1DGq3ACh6KnhFC6zEBQAcrBGQQxjQmqww/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Девушки · Право (Google Drive)">
+    <div class="work-frame"><img src="assets/legal.webp" alt="Кадр из видео «Девушки · Право»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 05</span></div>
+    <div class="work-meta"><span class="work-name">Девушки · Право</span><span class="work-type">Экспертное видео / Право</span></div>
+  </a>
+<a class="work-card feature-card" href="https://drive.google.com/file/d/1Cv6kQ9fvYhRzYJ8UGcmgQUnkGheuy1Jx/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Strategy B-roll (Google Drive)">
+    <div class="work-frame"><img src="assets/medical.webp" alt="Кадр из видео «Strategy B-roll»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 06</span></div>
+    <div class="work-meta"><span class="work-name">Strategy B-roll</span><span class="work-type">Экспертное видео / Медицина</span></div>
+  </a>
+<a class="work-card feature-card" href="https://drive.google.com/file/d/1XNxusK_kf2D7ZC3HjorWyeMS9JpGhE4V/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: KiraPrompts (Google Drive)">
+    <div class="work-frame"><img src="assets/kiraprompts.webp" alt="Кадр из видео «KiraPrompts»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 07</span></div>
+    <div class="work-meta"><span class="work-name">KiraPrompts</span><span class="work-type">AI-контент / Reels</span></div>
+  </a></div>
+ <div class="archive-top"><h3>ОСТАЛЬНЫЕ <em>кадры.</em></h3><div class="archive-filter" role="group" aria-label="Фильтр проектов"><button type="button" data-filter="all" aria-pressed="true">Все</button><button type="button" data-filter="expert" aria-pressed="false">Экспертное</button><button type="button" data-filter="story" aria-pressed="false">Истории</button><button type="button" data-filter="creative" aria-pressed="false">Креатив</button><button type="button" data-filter="ai" aria-pressed="false">AI</button></div></div>
+ <p id="archive-count" class="archive-count" aria-live="polite">11 РАБОТ / ОТКРЫТЬ ВИДЕО ↗</p>
+ <div class="archive-grid" id="archive-grid"><div class="archive-item" data-category="ai"><a class="work-card archive-card" href="https://drive.google.com/file/d/1UxXWAoyfNz0QfGiiwZlSnJ0isC_XRDDN/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Заработок на нейросетях (Google Drive)">
+    <div class="work-frame"><img src="assets/earnai.webp" alt="Кадр из видео «Заработок на нейросетях»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 08</span></div>
+    <div class="work-meta"><span class="work-name">Заработок на нейросетях</span><span class="work-type">Экспертное видео / AI / 16:9</span></div>
+  </a></div>
+<div class="archive-item" data-category="expert"><a class="work-card archive-card" href="https://drive.google.com/file/d/1w_et2mX-7zczoPxjNLP_Gce7s2oghFwW/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Бизнес ошибка (Google Drive)">
+    <div class="work-frame"><img src="assets/business.webp" alt="Кадр из видео «Бизнес ошибка»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 09</span></div>
+    <div class="work-meta"><span class="work-name">Бизнес ошибка</span><span class="work-type">Экспертное видео / B-roll</span></div>
+  </a></div>
+<div class="archive-item" data-category="expert"><a class="work-card archive-card" href="https://drive.google.com/file/d/1PGkXCLndm8eM3gZwzU0XcxIoFfRdB8Qr/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: First Aid (Google Drive)">
+    <div class="work-frame"><img src="assets/firstaid.webp" alt="Кадр из видео «First Aid»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 10</span></div>
+    <div class="work-meta"><span class="work-name">First Aid</span><span class="work-type">Экспертное видео / Титры</span></div>
+  </a></div>
+<div class="archive-item" data-category="creative"><a class="work-card archive-card" href="https://drive.google.com/file/d/1SlQvyICY4RGPyMLV-ivna8nTT_QfMLQ4/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Petrolero (Google Drive)">
+    <div class="work-frame"><img src="assets/petrolero.webp" alt="Кадр из видео «Petrolero»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 11</span></div>
+    <div class="work-meta"><span class="work-name">Petrolero</span><span class="work-type">Авто / Трекинг / Типографика</span></div>
+  </a></div>
+<div class="archive-item" data-category="story"><a class="work-card archive-card" href="https://drive.google.com/file/d/15ssT-Fh4Mrq714Waiqy9H5E0WGPnHRPQ/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Artist (Google Drive)">
+    <div class="work-frame"><img src="assets/artist.webp" alt="Кадр из видео «Artist»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 12</span></div>
+    <div class="work-meta"><span class="work-name">Artist</span><span class="work-type">Разговорный Reels / Субтитры</span></div>
+  </a></div>
+<div class="archive-item" data-category="story"><a class="work-card archive-card" href="https://drive.google.com/file/d/18WcRjx7i4mVRNI-795WADM6xROE-cGeX/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Полностью поменяй жизнь (Google Drive)">
+    <div class="work-frame"><img src="assets/life.webp" alt="Кадр из видео «Полностью поменяй жизнь»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 13</span></div>
+    <div class="work-meta"><span class="work-name">Полностью поменяй жизнь</span><span class="work-type">Разговорное видео / Титры</span></div>
+  </a></div>
+<div class="archive-item" data-category="creative"><a class="work-card archive-card" href="https://drive.google.com/file/d/15IR0-SgFdlHUSdKWmZXhWXZ3_NXgBG4t/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Квартира (Google Drive)">
+    <div class="work-frame"><img src="assets/apartment.webp" alt="Кадр из видео «Квартира»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 14</span></div>
+    <div class="work-meta"><span class="work-name">Квартира</span><span class="work-type">Динамичный монтаж / Вставки</span></div>
+  </a></div>
+<div class="archive-item" data-category="expert"><a class="work-card archive-card" href="https://drive.google.com/file/d/1Q_RT-Lnbx1cKti7JA3koKhp4cTAjS8HT/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Продвижение в соцсетях (Google Drive)">
+    <div class="work-frame"><img src="assets/social.webp" alt="Кадр из видео «Продвижение в соцсетях»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 15</span></div>
+    <div class="work-meta"><span class="work-name">Продвижение в соцсетях</span><span class="work-type">Экспертное видео / Титры</span></div>
+  </a></div>
+<div class="archive-item" data-category="ai"><a class="work-card archive-card" href="https://drive.google.com/file/d/1Tk_WYD3aZsiYjFCfjOhLySS2mKLJ1_xe/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Claude (Google Drive)">
+    <div class="work-frame"><img src="assets/claude.webp" alt="Кадр из видео «Claude»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 16</span></div>
+    <div class="work-meta"><span class="work-name">Claude</span><span class="work-type">Технологии / Экранные вставки</span></div>
+  </a></div>
+<div class="archive-item" data-category="creative"><a class="work-card archive-card" href="https://drive.google.com/file/d/1zBiXUWP8P14IML0VvLMtUq6CZ1O7cR0d/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Food (Google Drive)">
+    <div class="work-frame"><img src="assets/food.webp" alt="Кадр из видео «Food»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 17</span></div>
+    <div class="work-meta"><span class="work-name">Food</span><span class="work-type">Лайфстайл / Короткий монтаж</span></div>
+  </a></div>
+<div class="archive-item" data-category="creative"><a class="work-card archive-card" href="https://drive.google.com/file/d/1paUGtR9cQ0Z6M3uIms-xc1JtEEMX8aBL/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть работу: Ямалмото (Google Drive)">
+    <div class="work-frame"><img src="assets/yamalmoto.webp" alt="Кадр из видео «Ямалмото»" loading="lazy" decoding="async"><span class="work-open" aria-hidden="true">↗</span><span class="frame-index">K/E — 18</span></div>
+    <div class="work-meta"><span class="work-name">Ямалмото</span><span class="work-type">Динамичный монтаж / Экшен</span></div>
+  </a></div></div>
+ <div class="archive-more"><p>НЕ ВСЕ РОЛИКИ ОКАЗАЛИСЬ НА ГЛАВНОЙ.<br>ПОЛНОЕ СОБРАНИЕ — В GOOGLE DRIVE.</p><a class="underlink" href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener noreferrer">Открыть папку ↗</a></div>
+ </section>
+</div>
+<section id="about" class="about" aria-labelledby="about-title"><div class="wrap"><span class="about-kicker">02 / ЧЕЛОВЕК ЗА МОНТАЖОМ</span><div class="about-grid"><div><h2 class="about-headline" id="about-title">ЗА<br><em>кадром</em><b>.</b></h2></div><div class="about-side"><p>Я Вадим Капорин. Монтирую Reels, Shorts и короткие видео для соцсетей. Работаю с реальными заказчиками — от исходников и ТЗ до правок и готового ролика.</p><p class="subtle">Есть оплаченные проекты и опыт долгосрочного сотрудничества. В портфолио — разговорные и экспертные видео, креатив, бизнес, медицина, право и AI-контент. Рассматриваю фриланс, проектную и постоянную удалённую работу.</p><div class="about-stats"><div class="about-stat"><strong>до 1 года</strong><span>КОММЕРЧЕСКИЙ ОПЫТ</span></div><div class="about-stat"><strong>Reels / Shorts</strong><span>ОСНОВНЫЕ ФОРМАТЫ</span></div><div class="about-stat"><strong>RU / EN / ES</strong><span>ЯЗЫКИ</span></div></div></div></div><div class="capability"><div><h3>ИНСТРУМЕНТЫ / НАВЫКИ</h3><div class="tag-list"><span>Adobe Premiere Pro</span><span>After Effects · базовый</span><span>Субтитры и типографика</span><span>B-roll</span><span>Музыка / SFX</span><span>Обработка звука</span><span>Базовая цветокоррекция</span><span>AI-видео / изображения</span></div></div><div><h3>КАК Я РАБОТАЮ</h3><p>Получаю исходные материалы и задачу → собираю монтаж → добавляю нужные визуальные элементы и звук → учитываю обратную связь → сдаю готовое видео.</p></div></div></div></section>
+<section id="contact" class="contact-section" aria-labelledby="contact-title"><div class="wrap"><div class="contact-kicker">03 / НА СВЯЗИ — ТЕЛЕГРАМ И ПОЧТА</div><div class="contact-grid"><div><h2 id="contact-title" class="contact-h">ДАВАЙ<br><em>обсудим</em><b>.</b></h2></div><div class="contact-details"><p>Есть ролик, проект или просто задача по монтажу? Напиши в Telegram или на почту — обсудим материалы и формат работы.</p><a class="contact-route" href="https://t.me/razgameme" target="_blank" rel="noopener noreferrer"><span>Telegram · @razgameme</span><small>НАПИСАТЬ ↗</small></a><a class="contact-route" href="mailto:vadimkaporin1@gmail.com"><span>vadimkaporin1@gmail.com</span><small>EMAIL ↗</small></a><div class="contact-small"><span class="dot" aria-hidden="true"></span> САНКТ-ПЕТЕРБУРГ / УДАЛЁННО</div></div></div></div></section>
 </main>
-
-</body>
-</html>
+<footer class="footer"><div class="wrap footer-inner"><span>© 2026 ВАДИМ КАПОРИН / МОНТАЖ</span><span>СДЕЛАНО С ВНИМАНИЕМ К КАДРУ ✳</span><a href="#top">НАВЕРХ ↑</a></div></footer>
+<script>
+(function(){
+  const buttons=[...document.querySelectorAll('[data-filter]')];
+  const items=[...document.querySelectorAll('.archive-item')];
+  const counter=document.getElementById('archive-count');
+  buttons.forEach(button=>button.addEventListener('click',()=>{
+    const value=button.dataset.filter;
+    buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    let shown=0;
+    items.forEach(el=>{let match=value==='all'||el.dataset.category===value;el.hidden=!match;if(match)shown++});
+    counter.textContent=`${shown} ${shown===1?'РАБОТА':(shown>=2&&shown<=4?'РАБОТЫ':'РАБОТ')} / ОТКРЫТЬ ВИДЕО ↗`;
+  }));
+})();
+</script>
+</body></html>
