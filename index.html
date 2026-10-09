@@ -8,7 +8,7 @@
 <meta content="Вадим Капорин — видеомонтажёр из Санкт-Петербурга. Reels, Shorts, короткие видео. Портфолио и контакты." name="description"/>
 <title>Вадим Капорин — видеомонтажёр / Reels, Shorts</title>
 <link href="styles.css" rel="stylesheet"/>
-<script defer="" src="script.js"></script>
+
 </head>
 <body>
 <a class="skip-link" href="#selected-work">Перейти к работам</a>
@@ -145,4 +145,115 @@
 </section>
 </div>
 <noscript><p class="noscript">JavaScript выключен: все карточки и проекты по-прежнему открывают видео в Google Drive.</p></noscript>
-</body></html>
+<script>
+"use strict";
+// One source of truth: every clickable project's name, title and Drive URL live in index.html.
+// Unlike the earlier version, no parallel JavaScript array can point to another video.
+const posterWall = document.getElementById('posterWall');
+const posters = [...posterWall.querySelectorAll('a.poster')];
+const rows = [...document.querySelectorAll('a.work-row')];
+const rowsById = new Map(rows.map(el => [el.dataset.work, el]));
+const selectedName = document.getElementById('selectedName');
+const watchSelected = document.getElementById('watchSelected');
+const lightbox = document.getElementById('lightbox');
+const panel = lightbox.querySelector('.lightbox__panel');
+const videoHost = document.getElementById('videoHost');
+const closeButton = document.getElementById('closeLightbox');
+const driveLink = document.getElementById('driveLink');
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+let selectedPoster = Math.max(0, posters.findIndex(x=>x.classList.contains('is-active')));
+let lastPointerType = '';
+let lastFocus = null;
+
+function projectData(element) {
+  // The clicked element's OWN href is authoritative: never pull a link from a different slot.
+  const row = rowsById.get(element.dataset.work);
+  const title = element.querySelector('.poster__name, .work-row__name')?.textContent.trim()
+     || row?.querySelector('.work-row__name')?.textContent.trim() || 'Видео';
+  const description = element.querySelector('.work-row__type')?.textContent.trim()
+     || row?.querySelector('.work-row__type')?.textContent.trim() || '';
+  return {title, description, url: element.href};
+}
+function selectPoster(i) {
+  if(i < 0 || i >= posters.length) return;
+  selectedPoster = i;
+  posters.forEach((poster,j) => {
+    poster.classList.toggle('is-active', j===i);
+    poster.setAttribute('aria-current', j===i ? 'true' : 'false');
+  });
+  selectedName.textContent = projectData(posters[i]).title;
+}
+posters.forEach((poster,i) => {
+  poster.addEventListener('pointerdown', e => {lastPointerType=e.pointerType;});
+  poster.addEventListener('pointerenter', e => {if(e.pointerType==='mouse' && finePointer.matches) selectPoster(i);});
+  poster.addEventListener('focus', () => {if(poster.matches(':focus-visible'))selectPoster(i);});
+  poster.addEventListener('click', e=>{
+    if(e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    const touch = lastPointerType==='touch' || lastPointerType==='pen' || !finePointer.matches;
+    lastPointerType='';
+    if(touch && selectedPoster!==i){selectPoster(i);return;}
+    openVideo(poster);
+  });
+  poster.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft' || e.key==='ArrowRight'){
+      e.preventDefault();
+      const j=Math.max(0,Math.min(posters.length-1,i+(e.key==='ArrowRight'?1:-1)));
+      posters[j].focus(); selectPoster(j);
+    }
+  });
+});
+watchSelected.addEventListener('click', () => openVideo(posters[selectedPoster]));
+rows.forEach(row=>{
+  row.addEventListener('click',e=>{
+    if(e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    openVideo(row);
+  });
+});
+function openVideo(element) {
+  const work = projectData(element);
+  if(!work.url) return;
+  lastFocus = document.activeElement;
+  document.getElementById('lightboxTitle').textContent = work.title;
+  document.getElementById('lightboxDescription').textContent = work.description;
+  driveLink.href = work.url;
+  videoHost.replaceChildren();
+  videoHost.classList.toggle('is-landscape',/Заработок на нейросетях/i.test(work.title));
+  const match = /\/d\/([a-zA-Z0-9_-]+)/.exec(work.url);
+  if (!match) {window.open(work.url, '_blank', 'noopener,noreferrer');return;}
+  const frame = document.createElement('iframe');
+  frame.src = 'https://drive.google.com/file/d/'+match[1]+'/preview';
+  frame.title = 'Просмотр: '+work.title;
+  frame.setAttribute('allow','autoplay; fullscreen; picture-in-picture');
+  frame.setAttribute('allowfullscreen','');
+  frame.referrerPolicy = 'strict-origin-when-cross-origin';
+  videoHost.append(frame);
+  lightbox.hidden = false;
+  document.body.classList.add('lock-scroll');
+  closeButton.focus({preventScroll:true});
+}
+function closeVideo() {
+  if(lightbox.hidden) return;
+  lightbox.hidden = true;
+  videoHost.replaceChildren();
+  document.body.classList.remove('lock-scroll');
+  if(lastFocus?.isConnected) lastFocus.focus({preventScroll:true});
+}
+closeButton.addEventListener('click',closeVideo);
+lightbox.querySelector('[data-close]').addEventListener('click',closeVideo);
+document.addEventListener('keydown',e=>{
+  if(lightbox.hidden) return;
+  if(e.key==='Escape'){e.preventDefault();closeVideo();return;}
+  if(e.key==='Tab'){
+    const nodes=[...panel.querySelectorAll('a[href],button:not([disabled]),iframe')]
+      .filter(el=>el.getClientRects().length);
+    if(!nodes.length)return;
+    const first=nodes[0], last=nodes[nodes.length-1];
+    if(e.shiftKey && document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus();}
+  }
+});
+selectPoster(selectedPoster);
+
+</script></body></html>
