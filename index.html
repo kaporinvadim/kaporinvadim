@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Вадим Капорин — видеомонтажёр из Санкт-Петербурга. Короткие видео, Reels, Shorts, коммерческие проекты.">
+  <meta name="theme-color" content="#ecebe7">
+  <title>Вадим Капорин — видеомонтаж</title>
+  <style>
+    :root {--paper:#ecebe7;--white:#f8f8f5;--ink:#232522;--muted:#6d6f6a;--line:#d0d0cb;}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    button,a{-webkit-tap-highlight-color:transparent}
+    a:focus-visible{outline:2px solid #23519b;outline-offset:4px}
+    .shell{width:min(100% - 76px,1460px);margin-inline:auto}
+    header{height:92px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-size:19px;letter-spacing:-.025em;font-weight:700;white-space:nowrap}
+    .header-right{display:flex;align-items:center;gap:45px;font-size:14px}
+    nav{display:flex;gap:24px}
+    header a:hover,footer a:hover,.text-link:hover{text-decoration:underline;text-underline-offset:4px}
+    .hello{padding:56px 0 22px;display:flex;align-items:end;justify-content:space-between;gap:26px}
+    .hello h1{font-size:clamp(30px,3.25vw,46px);font-weight:500;letter-spacing:-.04em;line-height:1.13;margin:0;max-width:700px}
+    .hello aside{max-width:330px;font-size:15px;line-height:1.6;color:#545750;padding-bottom:2px}
+    .hello aside p{margin:0}
+    .gallery-wrap{max-width:1540px;margin:0 auto;overflow:hidden}
+    .gallery{position:relative;max-width:1430px;height:650px;margin:0 auto;isolation:isolate}
+    .piece{position:absolute;width:clamp(172px,17.3vw,235px);background:#fbfbfa;padding:10px 10px 0;box-shadow:0 4px 12px #0000001c,0 1px 2px #00000012;transform:rotate(var(--rot));transform-origin:center 45%;z-index:var(--z);transition:box-shadow .15s ease}
+    .piece:hover{z-index:20;box-shadow:0 10px 23px #0000002a,0 2px 4px #00000014}
+    .piece img{display:block;width:100%;aspect-ratio:10 / 16;object-fit:cover;object-position:center}
+    .caption{padding:11px 2px 13px;display:flex;align-items:center;justify-content:space-between;gap:5px;font-size:14px;line-height:1.3;font-weight:500}
+    .caption .arrow{font-size:19px;flex:none;line-height:1;font-weight:400}
+    .piece:hover .caption>span:first-child{text-decoration:underline;text-underline-offset:3px}
+    .piece:nth-child(1){--rot:-6deg;--z:2;left:5%;top:58px}
+    .piece:nth-child(2){--rot:3.5deg;--z:3;left:22.5%;top:154px}
+    .piece:nth-child(3){--rot:-2.5deg;--z:4;left:41.3%;top:28px}
+    .piece:nth-child(4){--rot:5.5deg;--z:5;left:59.9%;top:143px}
+    .piece:nth-child(5){--rot:-5.2deg;--z:6;left:78%;top:48px}
+    .under-gallery{padding:0 0 67px;display:flex;justify-content:space-between;align-items:baseline;gap:24px;font-size:15px}
+    .under-gallery .helper{font-size:13px;color:var(--muted)}
+    .text-link{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+    .info-band{background:var(--white)}
+    .info{padding:75px 0 94px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr) minmax(0,.65fr);column-gap:clamp(30px,5vw,90px)}
+    .info h2{font-size:17px;letter-spacing:-.02em;margin:0 0 25px;font-weight:700}
+    .info p{font-size:15px;line-height:1.68;margin:0 0 17px;max-width:440px}
+    .info .muted{color:#54574f}
+    .info .small{font-size:14px}
+    .info .links{display:flex;flex-direction:column;align-items:start;gap:13px;overflow-wrap:anywhere}
+    .info .links a{font-size:16px;text-decoration:underline;text-underline-offset:4px}
+    .tinyline{margin:24px 0 0!important;font-size:13px!important;color:var(--muted)}
+    footer{background:var(--white);border-top:1px solid #deded9}
+    .foot{display:flex;justify-content:space-between;gap:20px;padding:23px 0 27px;font-size:13px;color:#5e605b}
+    @media(max-width:1170px){
+      .gallery{height:570px}
+      .piece{width:clamp(155px,18vw,205px);padding:8px 8px 0}
+      .piece:nth-child(1){left:3%;top:46px}.piece:nth-child(2){left:21%;top:155px}.piece:nth-child(3){left:39.5%;top:28px}.piece:nth-child(4){left:58%;top:158px}.piece:nth-child(5){left:76%;top:49px}
+      .caption{font-size:12.5px;padding:10px 1px 11px}
+      .info{grid-template-columns:1fr 1fr;row-gap:48px}
+      .contact-col{grid-column:1/-1}
+      .info .links{flex-direction:row;flex-wrap:wrap;gap:20px}
+    }
+    @media(max-width:800px){
+      .shell{width:calc(100% - 40px)}
+      header{height:77px}
+      .header-right{gap:16px}
+      nav{gap:17px}
+      .hello{padding-top:40px;display:block}
+      .hello aside{margin-top:18px;max-width:580px}
+      .gallery-wrap{overflow:hidden}
+      .gallery{display:flex;position:relative;align-items:center;gap:6px;overflow-x:auto;overflow-y:hidden;height:540px;scroll-snap-type:x proximity;scrollbar-width:thin;padding:0 45px;overscroll-behavior-x:contain}
+      .piece{position:relative;flex:0 0 226px;width:226px;left:auto!important;top:auto!important;transform:rotate(var(--rot));scroll-snap-align:center;margin:0 1px;box-shadow:0 4px 9px #00000025}
+      .piece:nth-child(2),.piece:nth-child(4){margin-top:55px}
+      .piece:nth-child(1),.piece:nth-child(3),.piece:nth-child(5){margin-top:-42px}
+      .caption{font-size:13.5px}
+      .under-gallery{padding:0 0 48px}
+    }
+    @media(max-width:600px){
+      .shell{width:calc(100% - 32px)}
+      header{height:auto;min-height:70px;flex-wrap:wrap;gap:4px 12px;padding:17px 0 12px}
+      .brand{font-size:17px}
+      .header-right{gap:15px;font-size:13px}
+      .header-right nav a:nth-child(2){display:none}
+      .hello{padding:34px 0 0}
+      .hello h1{font-size:31px}
+      .hello aside{font-size:14px;margin-top:15px}
+      .gallery{height:490px;padding:0 33px;gap:0}
+      .piece{flex-basis:202px;width:202px;padding:8px 8px 0}
+      .piece:nth-child(even){margin-top:40px}.piece:nth-child(odd){margin-top:-28px}
+      .under-gallery{flex-direction:column;gap:11px;padding-bottom:47px;line-height:1.4}
+      .under-gallery .helper{font-size:12px}
+      .info{padding:54px 0 68px;display:block}
+      .info>div+div{margin-top:45px}
+      .info h2{margin-bottom:16px}
+      .info p{font-size:14.5px}
+      .info .links{display:flex;flex-direction:column;gap:10px}
+      .info .links a{font-size:15px}
+      .foot{font-size:12px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.piece{transition:none}}
+  </style>
+</head>
+<body id="top">
+  <div class="shell">
+    <header>
+      <a class="brand" href="#top">Вадим Капорин</a>
+      <div class="header-right"><nav aria-label="Навигация"><a href="#work">Видео</a><a href="#about">Обо мне</a></nav><a class="text-link" href="https://t.me/razgameme" target="_blank" rel="noopener noreferrer">Написать ↗</a></div>
+    </header>
+    <section class="hello" aria-labelledby="main-heading">
+      <h1 id="main-heading">Привет, я Вадим.<br>Монтирую ролики для соцсетей.</h1>
+      <aside><p>Ниже — несколько моих работ. Нажми на любую обложку, чтобы посмотреть видео.</p></aside>
+    </section>
+  </div>
+  <main>
+    <section id="work" aria-label="Избранные видеоработы">
+      <div class="gallery-wrap"><div class="gallery">
+        <a class="piece" href="https://drive.google.com/file/d/1B2iDVBz0YV7iEJiiA-Ti8UGwuYHPy0_s/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть видео Микроволновка в Google Drive">
+          <img src="assets/microwave.webp" alt="Микроволновка" loading="eager"><span class="caption"><span>Микроволновка</span><span class="arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a class="piece" href="https://drive.google.com/file/d/1maNDR_-2Y6nf_A2wPONRtQaHcsOfxdY1/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть видео Делайте рекламу одежды в Google Drive">
+          <img src="assets/advertising-clothes.webp" alt="Делайте рекламу одежды" loading="eager"><span class="caption"><span>Делайте рекламу одежды</span><span class="arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a class="piece" href="https://drive.google.com/file/d/1GrNmbvvgvIKDfHGLY_zmu0Q8CfwiQGnJ/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть видео 6 серия в Google Drive">
+          <img src="assets/series6.webp" alt="6 серия" loading="eager"><span class="caption"><span>6 серия</span><span class="arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a class="piece" href="https://drive.google.com/file/d/1ojNvMNzCqxje_vCoaOPcC7ek5c9b-v9_/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть видео Саша Nordic 2.0 в Google Drive">
+          <img src="assets/nordic.webp" alt="Саша Nordic 2.0" loading="lazy"><span class="caption"><span>Саша Nordic 2.0</span><span class="arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a class="piece" href="https://drive.google.com/file/d/1nIJatAI0eC3k-BmsFZD4AGbcBTaLywDd/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть видео 5 серия в Google Drive">
+          <img src="assets/series5.webp" alt="5 серия" loading="lazy"><span class="caption"><span>5 серия</span><span class="arrow" aria-hidden="true">↗</span></span>
+        </a>
+      </div></div>
+      <div class="shell under-gallery"><span class="helper">Пять избранных роликов. На телефоне листайте обложки в сторону.</span><a class="text-link" href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener noreferrer">Больше работ в Google Drive ↗</a></div>
+    </section>
+    <section class="info-band" id="about"><div class="shell info">
+      <div class="about-col"><h2>Обо мне</h2><p>Монтирую короткие вертикальные видео: разговорные ролики, экспертный контент, Reels и Shorts. Работаю с исходниками и техническим заданием, делаю нарезку, субтитры, B-roll, подбираю музыку и звуковые эффекты.</p><p class="muted">Есть опыт работы с AI-видео и генеративными изображениями.</p></div>
+      <div class="experience-col"><h2>Опыт и инструменты</h2><p>Коммерческий опыт до года: оплачиваемые заказы и долгосрочное сотрудничество. Получаю материалы, монтирую ролик под задачу, вношу правки и сдаю готовую работу.</p><p class="small muted"><strong>Программы:</strong> Adobe Premiere Pro, After Effects (базовая анимация и трекинг).</p><p class="small muted"><strong>Языки:</strong> русский — родной; английский и испанский — средний уровень.</p></div>
+      <div class="contact-col"><h2>Связаться</h2><div class="links"><a href="https://t.me/razgameme" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a href="mailto:vadimkaporin1@gmail.com">vadimkaporin1@gmail.com</a></div><p class="tinyline">Фриланс · Проектная и удалённая работа</p></div>
+    </div></section>
+  </main>
+  <footer><div class="shell foot"><span>Вадим Капорин, Санкт-Петербург</span><a href="#top">Наверх ↑</a></div></footer>
+</body>
+</html>
