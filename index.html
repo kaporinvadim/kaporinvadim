@@ -26,17 +26,18 @@
     .hello aside p{margin:0}
     .gallery-wrap{max-width:1540px;margin:0 auto;overflow:hidden}
     .gallery{position:relative;max-width:1430px;height:650px;margin:0 auto;isolation:isolate}
-    .piece{position:absolute;width:clamp(172px,17.3vw,235px);background:#fbfbfa;padding:10px 10px 0;box-shadow:0 4px 12px #0000001c,0 1px 2px #00000012;transform:rotate(var(--rot));transform-origin:center 45%;z-index:var(--z);transition:box-shadow .15s ease}
+    .piece{position:absolute;width:clamp(150px,15.6vw,210px);background:#fbfbfa;padding:10px 10px 0;box-shadow:0 4px 12px #0000001c,0 1px 2px #00000012;transform:rotate(var(--rot));transform-origin:center 45%;z-index:var(--z);transition:box-shadow .15s ease}
     .piece:hover{z-index:20;box-shadow:0 10px 23px #0000002a,0 2px 4px #00000014}
     .piece img{display:block;width:100%;aspect-ratio:10 / 16;object-fit:cover;object-position:center}
     .caption{padding:11px 2px 13px;display:flex;align-items:center;justify-content:space-between;gap:5px;font-size:14px;line-height:1.3;font-weight:500}
     .caption .arrow{font-size:19px;flex:none;line-height:1;font-weight:400}
     .piece:hover .caption>span:first-child{text-decoration:underline;text-underline-offset:3px}
-    .piece:nth-child(1){--rot:-6deg;--z:2;left:5%;top:58px}
-    .piece:nth-child(2){--rot:3.5deg;--z:3;left:22.5%;top:154px}
-    .piece:nth-child(3){--rot:-2.5deg;--z:4;left:41.3%;top:28px}
-    .piece:nth-child(4){--rot:5.5deg;--z:5;left:59.9%;top:143px}
-    .piece:nth-child(5){--rot:-5.2deg;--z:6;left:78%;top:48px}
+    .piece:nth-child(1){--rot:-6deg;--z:2;left:4.1%;top:57px}
+    .piece:nth-child(2){--rot:3.5deg;--z:3;left:20.1%;top:156px}
+    .piece:nth-child(3){--rot:-2.5deg;--z:4;left:36.5%;top:35px}
+    .piece:nth-child(4){--rot:5.5deg;--z:5;left:52.7%;top:150px}
+    .piece:nth-child(5){--rot:-5.2deg;--z:6;left:68.6%;top:47px}
+    .piece:nth-child(6){--rot:4deg;--z:7;left:82.7%;top:146px}
     .under-gallery{padding:0 0 67px;display:flex;justify-content:space-between;align-items:baseline;gap:24px;font-size:15px}
     .under-gallery .helper{font-size:13px;color:var(--muted)}
     .text-link{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
@@ -53,8 +54,7 @@
     .foot{display:flex;justify-content:space-between;gap:20px;padding:23px 0 27px;font-size:13px;color:#5e605b}
     @media(max-width:1170px){
       .gallery{height:570px}
-      .piece{width:clamp(155px,18vw,205px);padding:8px 8px 0}
-      .piece:nth-child(1){left:3%;top:46px}.piece:nth-child(2){left:21%;top:155px}.piece:nth-child(3){left:39.5%;top:28px}.piece:nth-child(4){left:58%;top:158px}.piece:nth-child(5){left:76%;top:49px}
+      .piece{width:clamp(150px,16vw,190px);padding:8px 8px 0}
       .caption{font-size:12.5px;padding:10px 1px 11px}
       .info{grid-template-columns:1fr 1fr;row-gap:48px}
       .contact-col{grid-column:1/-1}
@@ -70,7 +70,7 @@
       .gallery-wrap{overflow:hidden}
       .gallery{display:flex;position:relative;align-items:center;gap:6px;overflow-x:auto;overflow-y:hidden;height:540px;scroll-snap-type:x proximity;scrollbar-width:thin;padding:0 45px;overscroll-behavior-x:contain}
       .piece{position:relative;flex:0 0 226px;width:226px;left:auto!important;top:auto!important;transform:rotate(var(--rot));scroll-snap-align:center;margin:0 1px;box-shadow:0 4px 9px #00000025}
-      .piece:nth-child(2),.piece:nth-child(4){margin-top:55px}
+      .piece:nth-child(2),.piece:nth-child(4),.piece:nth-child(6){margin-top:55px}
       .piece:nth-child(1),.piece:nth-child(3),.piece:nth-child(5){margin-top:-42px}
       .caption{font-size:13.5px}
       .under-gallery{padding:0 0 48px}
@@ -114,6 +114,9 @@
   <main>
     <section id="work" aria-label="Избранные видеоработы">
       <div class="gallery-wrap"><div class="gallery">
+        <a class="piece" href="https://drive.google.com/file/d/1cEl4yaIYNKWdegVEfecr9V6zhct_QAeY/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Смотреть видео Beauty Daily News в Google Drive">
+          <img src="assets/beauty-daily-news.webp" alt="Beauty Daily News" loading="eager"><span class="caption"><span>Beauty Daily News</span><span class="arrow" aria-hidden="true">↗</span></span>
+        </a>
         <a class="piece" href="https://drive.google.com/file/d/1B2iDVBz0YV7iEJiiA-Ti8UGwuYHPy0_s/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Смотреть видео Микроволновка в Google Drive">
           <img src="assets/microwave.webp" alt="Микроволновка" loading="eager"><span class="caption"><span>Микроволновка</span><span class="arrow" aria-hidden="true">↗</span></span>
         </a>
@@ -130,7 +133,7 @@
           <img src="assets/series5.webp" alt="5 серия" loading="lazy"><span class="caption"><span>5 серия</span><span class="arrow" aria-hidden="true">↗</span></span>
         </a>
       </div></div>
-      <div class="shell under-gallery"><span class="helper">Пять избранных роликов. На телефоне листайте обложки в сторону.</span><a class="text-link" href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener noreferrer">Больше работ в Google Drive ↗</a></div>
+      <div class="shell under-gallery"><span class="helper">Шесть избранных роликов. На телефоне листайте обложки в сторону.</span><a class="text-link" href="https://drive.google.com/drive/folders/1sPEPnK5FNYmBPlWWrajZSN-LURgl_NHN?usp=sharing" target="_blank" rel="noopener noreferrer">Больше работ в Google Drive ↗</a></div>
     </section>
     <section class="info-band" id="about"><div class="shell info">
       <div class="about-col"><h2>Обо мне</h2><p>Монтирую короткие вертикальные видео: разговорные ролики, экспертный контент, Reels и Shorts. Работаю с исходниками и техническим заданием, делаю нарезку, субтитры, B-roll, подбираю музыку и звуковые эффекты.</p><p class="muted">Есть опыт работы с AI-видео и генеративными изображениями.</p></div>
